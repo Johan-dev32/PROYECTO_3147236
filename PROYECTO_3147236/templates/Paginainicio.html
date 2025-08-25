@@ -1,132 +1,77 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Inicio - EduNotas</title>
-  <link href="../static/css/Inicio.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="../static/css/Inicio.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colegio Fe y Alegría</title>
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #f8f9fa;
-    }
-    .sidebar {
-      background-color: #e9ecef;
-      min-height: 100vh;
-      padding-top: 1rem;
-    }
-    .sidebar a {
-      display: block;
-      padding: 10px 15px;
-      color: black;
-      text-decoration: none;
-    }
-    .sidebar a:hover {
-      background-color: #dee2e6;
-    }
-    .main-content {
-      background-color: #ced4da;
-      padding: 2rem;
-    }
-    .noticia, .circular {
-      background-color: white;
-      height: 100px;
-      margin-bottom: 1rem;
-      border: 1px solid #adb5bd;
-    }
-    header {
-      background-color: white;
-      padding: 1rem;
-      border-bottom: 1px solid #ccc;
-    }
-    .title {
-      font-size: 40px;
-      margin-left: 30px;
-      font-weight: bold;
-    }
-    .circulares {
-      background-color: white;
-      padding: 1rem;
-      border-left: 1px solid #ccc;
-    }
-  </style>
+  <!-- Iconos -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- CSS propio -->
+  <link rel="stylesheet" href="../static/css/Inicio.css">
 </head>
 <body>
 
-  <header class="d-flex justify-content-between align-items-center px-4">
-    <div><img src="IMGS/IMG 2.PNG" alt="Logo" width="350" height="100"></div>
-    <div class="title">COLEGIO FE Y ALEGRÍA</div>
-    <button class="btn btn-outline-dark">Iniciar Sesión</button>
+  <!-- Header con botón -->
+  <header class="d-flex justify-content-between align-items-center p-3 border-bottom">
+    <!-- Botón hamburguesa -->
+    <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
+      <i class="bi bi-list"></i> <!-- icono hamburguesa -->
+    </button>
+
+    <h2 class="m-3">COLEGIO FE Y ALEGRIA</h2>
+    <button class="btn btn-outline-primary">
+  <i class="bi bi-person-circle"></i></button>
   </header>
 
-  <div class="container-fluid">
-    <div class="row">
-      
-      <nav class="col-md-2 sidebar">
-        <a class="fw-bold text-secondary">Inicio</a>
-        <a href="#">Notas</a>
-        <a href="#">Observador</a>
-        <a href="#">Profesores</a>
-        <a href="#">Manual del Usuario</a>
-      </nav>
-
-      
-      <main class="col-md-7 main-content">
-        <h5 class="text-center mb-4">NOTICIAS</h5>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="noticia">
-          <img src="IMGS/IMG 5.PNG" alt="Logo" width="420" height="98">
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="noticia">
-          <img src="IMGS/IMG 6.PNG" alt="Logo" width="420" height="98">
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="noticia">
-          <img src="IMGS/IMG 7.PNG" alt="Logo" width="420" height="98">
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="noticia">
-          <img src="IMGS/IMG 8.png" alt="Logo" width="420" height="98">
-            </div>
-          </div>
-        </div>
-      </main>
-
-      
-      <aside class="col-md-3 circulares">
-        <h6 class="text-center">CIRCULARES ESTUDIANTILES</h6>
-        <p>Marzo 30-06-24</p>
-        <div class="d-flex flex-wrap gap-2 mb-3">
-          <div class="circular" style="width: 45%;">
-          <img src="IMGS/IMG 3 (1).PNG" alt="Logo" width="160" height="90">
-          </div>
-          <div class="circular" style="width: 45%;">
-          <img src="IMGS/IMG 4.PNG" alt="Logo" width="160" height="90">
-          </div>
-          <div class="circular" style="width: 45%;">
-          <img src="IMGS/IMG 4.PNG" alt="Logo" width="160" height="90">
-          </div>
-          <div class="circular" style="width: 45%;">
-          <img src="IMGS/IMG 3 (1).PNG" alt="Logo" width="160" height="90">
-          </div>
-        </div>
-        <p>Marzo 01-05-24</p>
-        <div class="d-flex flex-wrap gap-2">
-          <div class="circular" style="width: 45%;">
-          <img src="IMGS/IMG 4.PNG" alt="Logo" width="160" height="90">
-          </div>
-          <div class="circular" style="width: 45%;">
-          <img src="IMGS/IMG 3 (1).png" alt="Logo" width="160" height="90">
-          </div>
-        </div>
-      </aside>
+  <!-- Sidebar (Offcanvas Bootstrap) -->
+  <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="sidebar">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Menú</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="nav flex-column">
+        <li class="nav-item"><a href="#" class="nav-link text-white">Inicio</a></li>
+        <li class="nav-item"><a href="#" class="nav-link text-white">Notas</a></li>
+        <li class="nav-item"><a href="#" class="nav-link text-white">Observador</a></li>
+        <li class="nav-item"><a href="#" class="nav-link text-white">Profesores</a></li>
+        <li class="nav-item"><a href="#" class="nav-link text-white">Manual del Usuario</a></li>
+      </ul>
     </div>
   </div>
 
+  <!-- Contenido principal -->
+  <div class="container mt-5">
+    <div class="row">
+      <!-- Noticias -->
+      <div class="col-md-8">
+        <h4 class="h4 ">NOTICIAS</h4>
+        <div class="row g-3">
+          <div class="col-md-6"><div class="p-5 bg-secondary text-white">Noticia 1</div></div>
+          <div class="col-md-6"><div class="p-5 bg-secondary text-white">Noticia 2</div></div>
+          <div class="col-md-6"><div class="p-5 bg-secondary text-white">Noticia 3</div></div>
+          <div class="col-md-6"><div class="p-5 bg-secondary text-white">Noticia 4</div></div>
+        </div>
+      </div>
+
+      <!-- Circulares -->
+      <div class="col-md-4">
+        <h4>CIRCULARES ESTUDIANTILES</h4>
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between">
+            Marzo 30-05-24 <span class="badge bg-primary">Ver</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            Marzo 01-05-24 <span class="badge bg-primary">Ver</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
