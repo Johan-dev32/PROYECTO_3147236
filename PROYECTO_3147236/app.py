@@ -15,6 +15,11 @@ db = mysql.connector.connect(
 def index():
     return render_template("Login.html")
 
+@app.route("/registro")
+def registro():
+    return render_template("Registro.html")
+
+
 @app.route("/login", methods=["POST"])
 def login():
     correo = request.form["correo"]
