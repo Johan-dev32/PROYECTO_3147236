@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Usuario</title>
+  <link rel="stylesheet" href="/static/css/Registro.css">
+</head>
+<body>
+    
+  <div class="form-container">
+    <h2>Registro del Usuario</h2>
+
+    <form id="registroForm">
+        <label for="nombres">Nombres</label>
+        <input type="text" id="nombres" name="nombres" placeholder="Escribe tus nombres" required>
+        <span class="error" id="errorNombres"></span>
+
+        <label for="apellidos">Apellidos</label>
+        <input type="text" id="apellidos" name="apellidos" placeholder="Escribe tus apellidos" required>
+        <span class="error" id="errorApellidos"></span>
+
+        <label for="correoPersonal">Correo Personal</label>
+        <input type="email" id="correoPersonal" name="correoPersonal" placeholder="@gmail.com" required>
+        <span class="error" id="errorCorreoPersonal"></span>
+
+        <label for="correoInstitucional">Correo Institucional</label>
+        <input type="email" id="correoInstitucional" name="correoInstitucional" placeholder="usuario@institucional.edu.co" required>
+        <span class="error" id="errorCorreoInstitucional"></span>
+
+        <label for="contrasena">Contraseña</label>
+        <input type="password" id="contrasena" name="contrasena" minlength="8" placeholder="digite la contraseña" required>
+        <small>Mínimo 8 caracteres</small>
+        <span class="error" id="errorContrasena"></span>
+
+        <label>Documento Ciudadano</label>
+        <div class="opciones-doc">
+          <label><input type="radio" name="doc" value="CC"> C.C.</label>
+          <label><input type="radio" name="doc" value="CE"> C.E.</label>
+          <label><input type="radio" name="doc" value="TI"> T.I.</label>
+        </div>
+        <span class="error" id="errorDoc"></span>
+
+        <label for="numDoc">Número de Documento</label>
+        <input type="text" id="numDoc" name="numDoc" placeholder="digite su documento" required>
+        <span class="error" id="errorNumDoc"></span>
+
+        <label for="telefono">Teléfono</label>
+        <input type="tel" id="telefono" name="telefono" placeholder="digite su numero de celular" required>
+        <span class="error" id="errorTelefono"></span>
+
+        <label>Sexo</label>
+        <div class="radio-group">
+            <label><input type="radio" name="sexo" value="M"> Masculino</label>
+            <label><input type="radio" name="sexo" value="F"> Femenino</label>
+        </div>
+        <span class="error" id="errorSexo"></span>
+
+        <label>Rol</label>
+        <div class="radio-group">
+        <label><input type="radio" name="rol" value="estudiante"> Estudiante</label>
+        <label><input type="radio" name="rol" value="docente"> Docente</label>
+        <label><input type="radio" name="rol" value="acudiente"> Acudiente</label>
+        <label><input type="radio" name="rol" value="administrador"> Administrador</label>
+        </div>
+        <span class="error" id="errorRol"></span>
+        
+
+        <div class="buttons">
+            <button type="submit" class="btn">Confirmar</button>
+            <button type="reset" class="btn">Guardar Datos</button>
+        </div>
+    </form>
+
+    <p class="nota">Se le notificará en el correo electrónico personal su confirmación de usuario</p>
+  </div>
+
+  <div id="mensajeExito" class="mensaje-exito">
+    <h3>✅ Los datos se han Guardado</h3>
+    <p>Para más información <a href="#">Confirma tu correo</a></p>
+  </div>
+
+  <script src="/static/js/registro.js"></script>
+</body>
+</html>

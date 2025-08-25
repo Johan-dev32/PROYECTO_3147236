@@ -1,0 +1,42 @@
+body {
+      background-color: #f8f9fa;
+    }
+    .sidebar {
+      background-color: #e9ecef;
+      min-height: 100vh;
+      padding-top: 1rem;
+    }
+    .sidebar a {
+      display: block;
+      padding: 10px 15px;
+      color: black;
+      text-decoration: none;
+    }
+    .sidebar a:hover {
+      background-color: #dee2e6;
+    }
+    .main-content {
+      background-color: #ced4da;
+      padding: 2rem;
+    }
+    .noticia, .circular {
+      background-color: white;
+      height: 100px;
+      margin-bottom: 1rem;
+      border: 1px solid #adb5bd;
+    }
+    header {
+      background-color: white;
+      padding: 1rem;
+      border-bottom: 1px solid #ccc;
+    }
+    .title {
+      font-size: 40px;
+      margin-left: 30px;
+      font-weight: bold;
+    }
+    .circulares {
+      background-color: white;
+      padding: 1rem;
+      border-left: 1px solid #ccc;
+    }

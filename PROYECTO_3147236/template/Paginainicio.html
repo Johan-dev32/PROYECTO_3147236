@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inicio - EduNotas</title>
+<link href="/static/css/Inicio.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .sidebar {
+      background-color: #e9ecef;
+      min-height: 100vh;
+      padding-top: 1rem;
+    }
+    .sidebar a {
+      display: block;
+      padding: 10px 15px;
+      color: black;
+      text-decoration: none;
+    }
+    .sidebar a:hover {
+      background-color: #dee2e6;
+    }
+    .main-content {
+      background-color: #ced4da;
+      padding: 2rem;
+    }
+    .noticia, .circular {
+      background-color: white;
+      height: 100px;
+      margin-bottom: 1rem;
+      border: 1px solid #adb5bd;
+    }
+    header {
+      background-color: white;
+      padding: 1rem;
+      border-bottom: 1px solid #ccc;
+    }
+    .title {
+      font-size: 40px;
+      margin-left: 30px;
+      font-weight: bold;
+    }
+    .circulares {
+      background-color: white;
+      padding: 1rem;
+      border-left: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="d-flex justify-content-between align-items-center px-4">
+    <div><img src="/template/IMGS/IMG 2.PNG" alt="Logo" width="350" height="100"></div>
+    <div class="title">COLEGIO FE Y ALEGRÍA</div>
+    <button class="btn btn-outline-dark">Iniciar Sesión</button>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      
+      <nav class="col-md-2 sidebar">
+        <a class="fw-bold text-secondary">Inicio</a>
+        <a href="#">Notas</a>
+        <a href="#">Observador</a>
+        <a href="#">Profesores</a>
+        <a href="#">Manual del Usuario</a>
+      </nav>
+
+      
+      <main class="col-md-7 main-content">
+        <h5 class="text-center mb-4">NOTICIAS</h5>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="noticia">
+          <img src="/template/IMGS/IMG 5.PNG" alt="Logo" width="420" height="98">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="noticia">
+          <img src="/template/IMGS/IMG 6.PNG" alt="Logo" width="420" height="98">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="noticia">
+          <img src="/template/IMGS/IMG 7.PNG" alt="Logo" width="420" height="98">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="noticia">
+          <img src="/template/IMGS/IMG 8.PNG" alt="Logo" width="420" height="98">
+            </div>
+          </div>
+        </div>
+      </main>
+
+      
+      <aside class="col-md-3 circulares">
+        <h6 class="text-center">CIRCULARES ESTUDIANTILES</h6>
+        <p>Marzo 30-06-24</p>
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <div class="circular" style="width: 45%;">
+          <img src="IMGS/IMG 3 (1).PNG" alt="Logo" width="160" height="90">
+          </div>
+          <div class="circular" style="width: 45%;">
+          <img src="/template/IMGS/IMG 4.PNG" alt="Logo" width="160" height="90">
+          </div>
+          <div class="circular" style="width: 45%;">
+          <img src="/template/IMGS/IMG 4.PNG" alt="Logo" width="160" height="90">
+          </div>
+          <div class="circular" style="width: 45%;">
+          <img src="/template/IMGS/IMG 3 (1).PNG" alt="Logo" width="160" height="90">
+          </div>
+        </div>
+        <p>Marzo 01-05-24</p>
+        <div class="d-flex flex-wrap gap-2">
+          <div class="circular" style="width: 45%;">
+          <img src="/template/IMGS/IMG 4.PNG" alt="Logo" width="160" height="90">
+          </div>
+          <div class="circular" style="width: 45%;">
+          <img src="/template/IMGS/IMG 3 (1).png" alt="Logo" width="160" height="90">
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+</body>
+</html>
