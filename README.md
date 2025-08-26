@@ -1,19 +1,48 @@
-# Mi Proyecto
+# Edunotas
 
-Este proyecto es una aplicación web que combina un backend desarrollado en JavaScript/Python, un frontend en HTML, y una base de datos. Además, incluye documentación técnica para facilitar su mantenimiento y desarrollo colaborativo.
+**Edunotas** es un software de gestión académica diseñado para mejorar la comunicación entre estudiantes y profesores, facilitando el seguimiento académico y la interacción dentro del entorno educativo.
 
 ---
 
-## Estructura del Proyecto
+## Tecnologías utilizadas
 
-mi-proyecto/
-├── backend/
-│   └── app.js / main.py
-├── frontend/
-│   └── index.html / src/
-├── db/
-│   └── scripts.sql / esquema.png
-├── docs/
-│   └── Informe_AnalisisDiseño.pdf
-├── README.md
-└── .gitignore
+### Front-end
+- HTML
+- CSS
+- React.js / Next.js
+- Bootstrap
+
+### Back-end
+- Python
+- Flask
+- JavaScript
+
+### Base de Datos
+- SQL
+- MySQL
+
+---
+# estructura de las carpetas
+
+PROYECTO_3147236/
+├── static/
+│   ├── css/
+│   │   ├── Inicio.css
+│   │   ├── Login.css
+│   │   └── Registro.css
+│   ├── js/
+│   │   ├── Inicio.js
+│   │   ├── Login.js
+│   │   └── registro.js
+├── templates/
+│   ├── IMGS/
+│   ├── Login.html
+│   ├── Paginainicio.html
+│   └── Registro.html
+├── .hintrc
+├── app.py
+├── app2.py
+├── .gitmodules
+└── README.md
+
+
