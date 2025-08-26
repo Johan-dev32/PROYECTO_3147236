@@ -1,6 +1,6 @@
 # Edunotas
 
-**Edunotas** es un software de gestión académica diseñado para mejorar la comunicación entre estudiantes y profesores, facilitando el seguimiento académico y la interacción dentro del entorno educativo.
+**Edunotas** es un software de gestión académica diseñado para mejorar la comunicación entre estudiantes, profesores y acudientes , facilitando el seguimiento académico y la interacción dentro del entorno educativo.
 
 ---
 
