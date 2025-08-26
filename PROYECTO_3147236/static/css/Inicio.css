@@ -48,3 +48,11 @@ header .btn-outline-primary:hover {
   font-size: 35px;
   font-family: 'Trebuchet MS', sans-serif;
 }
+.offcanvas{
+  font-size: 25px;
+}
+.btn-close-red-light {
+filter: invert(60%) sepia(100%) saturate(2000%) hue-rotate(316deg) brightness(103%) ;
+
+}
+

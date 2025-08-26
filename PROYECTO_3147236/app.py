@@ -36,5 +36,33 @@ def logout():
     session.pop("usuario", None)
     return redirect(url_for("index"))
 
+@app.route("/notas")
+def notas():
+    if "usuario" in session:
+        return render_template("Notas.html")
+    else:
+        return redirect(url_for("index"))
+
+@app.route("/observador")
+def observador():
+    if "usuario" in session:
+        return render_template("Observador.html")
+    else:
+        return redirect(url_for("index"))
+
+@app.route("/profesores")
+def profesores():
+    if "usuario" in session:
+        return render_template("Profesores.html")
+    else:
+        return redirect(url_for("index"))
+
+@app.route("/manual")
+def manual():
+    if "usuario" in session:
+        return render_template("ManualUsuario.html")
+    else:
+        return redirect(url_for("index"))
+
 if __name__ == "__main__":
     app.run(debug=True)
