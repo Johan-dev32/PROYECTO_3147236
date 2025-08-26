@@ -1,15 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
-import mysql.connector
 
 app = Flask(__name__)
 app.secret_key = "clave-secreta"
-
-db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="",
-    database="pruebaedu"
-)
 
 @app.route("/")
 def index():
@@ -19,19 +11,14 @@ def index():
 def registro():
     return render_template("Registro.html")
 
-
 @app.route("/login", methods=["POST"])
 def login():
     correo = request.form["correo"]
     contrasena = request.form["contrasena"]
 
-    cursor = db.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM usuario WHERE correo=%s AND contrasena=%s", (correo, contrasena))
-    usuario = cursor.fetchone()
-    cursor.close()
-
-    if usuario:
-        session["usuario"] = usuario["Correo"]
+    # Simulación de usuario válido (temporal)
+    if correo == "admin@ejemplo.com" and contrasena == "1234":
+        session["usuario"] = correo
         return redirect(url_for("inicio"))
     else:
         flash("Correo o contraseña incorrectos", "danger")
