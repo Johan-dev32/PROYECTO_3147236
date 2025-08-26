@@ -29,15 +29,16 @@
   <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="sidebar">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title">Menú</h5>
-      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+     <button type="button" class="btn-close btn-close-white btn-close-red-light" data-bs-dismiss="offcanvas"></button>
+
     </div>
-    <div class="offcanvas-body">
+    <div class="offcanvas-body ">
       <ul class="nav flex-column">
-        <li class="nav-item"><a href="#" class="nav-link text-white">Inicio</a></li>
-        <li class="nav-item"><a href="#" class="nav-link text-white">Notas</a></li>
-        <li class="nav-item"><a href="#" class="nav-link text-white">Observador</a></li>
-        <li class="nav-item"><a href="#" class="nav-link text-white">Profesores</a></li>
-        <li class="nav-item"><a href="#" class="nav-link text-white">Manual del Usuario</a></li>
+        <li class="nav-item"><a href="http://127.0.0.1:5000/inicio#" class="nav-link text-white">Inicio</a></li>
+        <li class="nav-item"><a href="{{ url_for('notas') }}" class="nav-link text-white">Notas</a>
+        <li class="nav-item"><a href="{{ url_for('observador') }}" class="nav-link text-white">Observador</a>
+        <li class="nav-item"><a href="{{ url_for('profesores') }}" class="nav-link text-white">Profesores</a>
+        <li class="nav-item"><a href="{{ url_for('manual') }}" class="nav-link text-white">Manual del Usuario</a>
       </ul>
     </div>
   </div>
