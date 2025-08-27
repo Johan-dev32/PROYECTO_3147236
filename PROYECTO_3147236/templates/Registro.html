@@ -33,7 +33,12 @@
         <small>Mínimo 8 caracteres</small>
         <span class="error" id="errorContrasena"></span>
 
-        <label>Documento Ciudadano</label>
+       
+        <label for="confirmarContrasena">Confirmación de contraseña</label>
+        <input type="password" id="confirmarContrasena" name="confirmarContrasena" minlength="8" placeholder="repita la contraseña" required>
+        <span class="error" id="errorConfirmarContrasena"></span> 
+
+        <label>Tipo de documento</label>
         <div class="opciones-doc">
           <label><input type="radio" name="doc" value="CC"> C.C.</label>
           <label><input type="radio" name="doc" value="CE"> C.E.</label>
@@ -48,6 +53,21 @@
         <label for="telefono">Teléfono</label>
         <input type="tel" id="telefono" name="telefono" placeholder="digite su numero de celular" required>
         <span class="error" id="errorTelefono"></span>
+
+        <label for="departamento">Departamento</label>
+        <select id="departamento" name="departamento" required>
+          <option value="">Seleccione un departamento</option>
+        </select>
+        <span class="error" id="errorDepartamento"></span>
+
+        <label for="ciudad">Ciudad</label>
+        <select id="ciudad" name="ciudad" required disabled>
+          <option value="">Seleccione una ciudad</option>
+        </select>
+        <span class="error" id="errorCiudad"></span>
+
+        <label>Dirección</label>
+        <input type="direccion" name="direccion" placeholder="Digite su dirección">
 
         <label>Sexo</label>
         <div class="radio-group">
