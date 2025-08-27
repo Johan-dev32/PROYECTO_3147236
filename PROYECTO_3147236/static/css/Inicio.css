@@ -1,5 +1,12 @@
 body {
-  font-family: 'Trebuchet MS', sans-serif;;
+  font-family: 'Trebuchet MS', sans-serif;
+  background-image: url("https://4kwallpapers.com/images/walls/thumbs_3t/9771.jpg"); /* Ruta de tu imagen */
+  background-size: cover;      /* Hace que la imagen cubra toda la pantalla */
+  background-repeat: no-repeat; /* Evita que se repita */
+   /* Hace que se quede fija al hacer scroll */
+  background-position: center;  /* Centra la imagen */
+  background-attachment: scroll;
+  height: 600px;
 }
 
 #sidebar {
@@ -12,39 +19,44 @@ body {
   border-radius: 8px;
 }
 header {
-  background-color: #050733ff; /* azul */
+  background-color: rgb(255, 255, 255); /* azul */
   color: rgb(255, 0, 0); /* texto en blanco */
 }
 
 /* Cambiar color del título */
-header h2 {
-  color: rgb(255, 255, 255);
-  font-size: 60px ;
+.titulo-header {
+ 
+  color: #050733ff;
+  font-size: 40px;
   font-weight: bolder;
   font-family: 'Trebuchet MS', sans-serif;
+  margin: 0;
+  margin-left: 60px;  /* lo acercas/separas de la izquierda */
 }
 
 /* Botón hamburguesa con color claro */
 header .btn-dark {
-  background-color: #ff0000;
+  background-color: #050733ff;
   border: none;
 }
 
+
 /* Botón de iniciar sesión */
 header .btn-outline-primary {
-  color: white;
-  border-color: white;
+  color: #050733ff;
+  border-color: #050733ff;
+  margin-left: 900px;
 }
 
 header .btn-outline-primary:hover {
   background-color: white;
-  color: #007bff;
+  color: #ffffff;
 }
 .h4{
   margin-left: 355px;
   font-weight: bolder;
-  margin-top: 40px;
   margin-bottom: 55px; 
+  margin-top: -20px;
   font-size: 35px;
   font-family: 'Trebuchet MS', sans-serif;
 }
@@ -55,4 +67,45 @@ header .btn-outline-primary:hover {
 filter: invert(60%) sepia(100%) saturate(2000%) hue-rotate(316deg) brightness(103%) ;
 
 }
+section.bg-light {
+  margin-top: 500px; /* ajusta el valor */
+}
+.txtimg{
+margin-left: 460px;
+font-size: 40px;
+margin-top: -150px;
+font-weight: bolder;
+color: white;
+}
+.txtimg2{
+  margin-left: 550px;
+  font-size: 30px;
+  margin-top:   10px;
+  font-weight: bold;
+  color: white;
+}
+.txtimg3{
+  margin-left: 50px;
+  font-size: 15px;
+  margin-top: 20px;
+  color: white;
+  text-align: center; 
+  font-weight: bold;
+}
+.containerimg{
+   margin-bottom: 0;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 500px;
+  
 
+}
+.bg-light{
+  margin-top: -80px;
+}
+.section{
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
