@@ -39,12 +39,12 @@ def registro():
         Direccion = request.form.get('Direccion')
         Rol = request.form.get('Rol')
 
-        if not all([nombres, apellidos, correo_personal, contrasena, num_doc, telefono, rol,direccion]):
+        if not all([Nombre, Apellido, Correo, Contrasena, NumeroDocumento, Telefono, Rol,Direccion]):
             flash('Por favor, completa todos los campos requeridos.', 'danger')
             return render_template('registro.html')
 
         try:
-            print(f"Usuario registrado: {nombres} {apellidos}, Rol: {rol}")
+            print(f"Usuario registrado: {Nombre} {Apellido}, Rol: {Rol}")
             
             flash('✅ Los datos se han guardado exitosamente.', 'success')
             
@@ -54,7 +54,7 @@ def registro():
             print(f"Error al registrar usuario: {e}")
             flash('Ocurrió un error al guardar los datos. Inténtalo de nuevo.', 'danger')
 
-    return render_template('registro.html')
+    return render_template('Registro.html')
 
        
 
