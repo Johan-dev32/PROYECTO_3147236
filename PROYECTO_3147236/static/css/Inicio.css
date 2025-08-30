@@ -12,10 +12,11 @@ body {
 #sidebar {
   width: 220px;
   min-height: 100vh;
+  background: linear-gradient(180deg, #3b61ea, #fc8e75);
 }
 
 #sidebar .nav-link:hover {
-  background-color: #ad3f3f;
+  background: linear-gradient(180deg, #3b61ea, #fc8e75);
   border-radius: 8px;
 }
 header {
@@ -56,6 +57,7 @@ header .btn-outline-primary:hover {
   margin-left: 355px;
   font-weight: bolder;
   margin-bottom: 55px; 
+  color:#050733ff;
   margin-top: -20px;
   font-size: 35px;
   font-family: 'Trebuchet MS', sans-serif;
@@ -108,4 +110,13 @@ color: white;
 .section{
   margin-top: 0 !important;
   padding-top: 0 !important;
+}
+.offcanvas-title{
+  margin-left: 40px;
+  font-weight: bold;
+  font-size: 30px ;
+}
+.nav-item{
+  font-weight: bold;
+  font-size: 22px;
 }
