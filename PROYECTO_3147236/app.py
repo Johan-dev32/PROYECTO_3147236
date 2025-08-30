@@ -6,9 +6,9 @@ from database.models import db, Usuario
 
 # Configuración de la base de datos
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@127.0.0.1:3306/edunotas_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@127.0.0.1:3306/EduNotas_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.secret_key = "clave-secreta"
+
 
 # Inicialización de la base de datos y Flask-Login
 db.init_app(app)
@@ -26,6 +26,37 @@ def load_user(user_id):
 @app.route('/')
 def index():
     return render_template('Paginainicio.html')
+
+@app.route('/registro', methods=['GET', 'POST'])
+def registro():
+    if request.method == 'POST':
+        Nombre = request.form.get('Nombre')
+        Apellido = request.form.get('Apellido')
+        Correo = request.form.get('Correo')
+        Contrasena = request.form.get('Contrasena')
+        NumeroDocumento = request.form.get('NumeroDocumento')
+        Telefono = request.form.get('Telefono')
+        Direccion = request.form.get('Direccion')
+        Rol = request.form.get('Rol')
+
+        if not all([nombres, apellidos, correo_personal, contrasena, num_doc, telefono, rol,direccion]):
+            flash('Por favor, completa todos los campos requeridos.', 'danger')
+            return render_template('registro.html')
+
+        try:
+            print(f"Usuario registrado: {nombres} {apellidos}, Rol: {rol}")
+            
+            flash('✅ Los datos se han guardado exitosamente.', 'success')
+            
+            return redirect(url_for('registro'))
+            
+        except Exception as e:
+            print(f"Error al registrar usuario: {e}")
+            flash('Ocurrió un error al guardar los datos. Inténtalo de nuevo.', 'danger')
+
+    return render_template('registro.html')
+
+       
 
 if __name__ == "__main__":
     app.run(debug=True)
