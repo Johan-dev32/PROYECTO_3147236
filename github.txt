@@ -1,6 +1,4 @@
-flask
-gunicorn
-flask_sqlalchemy
-flask_login
-pymysql
-werkzeug
+paso 1: escribir comando "git status" para ver los archivos que se han modificado
+paso 2: escribir comando "git add . " para agregar todos los archivos modificados
+paso 3: escribir comando "git commit -m "comentario" " para hacer commit
+paso 4: escribir comando "git push" para subir los cambios al repositorio remoto

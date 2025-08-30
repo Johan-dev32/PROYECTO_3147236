@@ -6,7 +6,7 @@ from database.models import db, Usuario
 
 # Configuración de la base de datos
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@127.0.0.1:3306/EduNotas_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@localhost:3306/EduNotas_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
@@ -57,6 +57,10 @@ def registro():
     return render_template('Registro.html')
 
        
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True)

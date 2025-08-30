@@ -47,6 +47,12 @@ header .btn-outline-primary {
   color: #050733ff;
   border-color: #050733ff;
   margin-left: 900px;
+
+}
+.btn-edunotas {
+    background-color: #050733ff; 
+    color: rgb(255, 255, 255);        
+    margin-left: 850px;
 }
 
 header .btn-outline-primary:hover {
@@ -75,7 +81,7 @@ section.bg-light {
 .txtimg{
 margin-left: 460px;
 font-size: 40px;
-margin-top: -150px;
+margin-top: 50px;
 font-weight: bolder;
 color: white;
 }
@@ -89,7 +95,7 @@ color: white;
 .txtimg3{
   margin-left: 50px;
   font-size: 15px;
-  margin-top: 20px;
+  margin-top: 30px;
   color: white;
   text-align: center; 
   font-weight: bold;
@@ -102,7 +108,9 @@ color: white;
   justify-content: center;
   height: 500px;
   
-
+}
+.nav-pills{
+  margin-top: 40px;
 }
 .bg-light{
   margin-top: -80px;
@@ -119,4 +127,24 @@ color: white;
 .nav-item{
   font-weight: bold;
   font-size: 22px;
+}
+
+.nav-pills .nav-link {
+  color: #050733ff !important; 
+}
+
+/* Al pasar el mouse */
+.nav-pills .nav-link:hover {
+  color: rgb(18, 24, 139) !important; 
+}
+
+/* Cuando está activo */
+.nav-pills .nav-link.active {
+  background-color: #050733ff !important; 
+  color: #fff !important; 
+  font-weight: bold;
+}
+.nav-pills{
+  max-width: 1000px;  
+  margin: 0 auto;    
 }
