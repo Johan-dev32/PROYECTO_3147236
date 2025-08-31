@@ -83,5 +83,21 @@ def profesores():
 def manual():
     return render_template('ManualUsuario.html')
 
+@app.route('/resumensemanal')
+def resumensemanal():
+    return render_template('ResumenSemanal.html')
+
+@app.route('/registrotutorias')
+def registrotutorias():
+    return render_template('RegistroTutorías.html')
+
+@app.route('/comunicacion')
+def comunicacion():
+    return render_template('Comunicación.html')
+                           
+@app.route('/materialapoyo')
+def materialapoyo():
+   return render_template('MaterialApoyo.html')                           
+                           
 if __name__ == "__main__":
     app.run(debug=True)
