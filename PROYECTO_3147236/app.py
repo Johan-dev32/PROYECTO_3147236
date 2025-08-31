@@ -62,5 +62,26 @@ def login():
     return render_template('login.html')
 
 
+
+@app.route('/Paginainicio')
+def paginainicio():
+    return render_template('Paginainicio.html')
+
+@app.route('/notas')
+def notas():
+    return render_template('Notas.html')
+
+@app.route('/observador')
+def observador():
+    return render_template('Observador.html')
+
+@app.route('/profesores')
+def profesores():
+    return render_template('Profesores.html')
+
+@app.route('/manual')
+def manual():
+    return render_template('ManualUsuario.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
