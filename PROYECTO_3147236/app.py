@@ -2,12 +2,15 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 from database.models import db, Usuario
+from sqlalchemy.exc import SQLAlchemyError
+
 
 
 # Configuración de la base de datos
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@localhost:3306/EduNotas_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@127.0.0.1:3306/edunotas'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = 'clave_secreta'
 
 
 # Inicialización de la base de datos y Flask-Login
@@ -33,26 +36,33 @@ def registro():
         Nombre = request.form.get('Nombre')
         Apellido = request.form.get('Apellido')
         Correo = request.form.get('Correo')
-        Contrasena = request.form.get('Contrasena')
-        NumeroDocumento = request.form.get('NumeroDocumento')
-        Telefono = request.form.get('Telefono')
-        Direccion = request.form.get('Direccion')
-        Rol = request.form.get('Rol')
+        Contrasena = request.form.get('Contraseña')
+        TipoDocumento = request.form.get('tipoDocumento')
+        NumeroDocumento = request.form.get('numeroDocumento')
 
-        if not all([Nombre, Apellido, Correo, Contrasena, NumeroDocumento, Telefono, Rol,Direccion]):
-            flash('Por favor, completa todos los campos requeridos.', 'danger')
-            return render_template('registro.html')
+        if not Nombre or not Apellido or not Correo or not Contrasena or not TipoDocumento or not NumeroDocumento:
+            flash('Por favor, completa todos los campos requeridos.')
+            return render_template('Registro.html')
 
         try:
-            print(f"Usuario registrado: {Nombre} {Apellido}, Rol: {Rol}")
-            
-            flash('✅ Los datos se han guardado exitosamente.', 'success')
-            
-            return redirect(url_for('registro'))
-            
-        except Exception as e:
-            print(f"Error al registrar usuario: {e}")
-            flash('Ocurrió un error al guardar los datos. Inténtalo de nuevo.', 'danger')
+            # CORREGIDO: Uso de db.session.query para consultar la base de datos
+            existing_user = db.session.query(Usuario).filter_by(Correo=Correo).first()
+            if existing_user:
+                flash('El correo electrónico ya está registrado. Por favor, usa otro.')
+                return render_template('Registro.html')
+
+            new_user = Usuario(Nombre=Nombre, Apellido=Apellido, Correo=Correo, Contraseña=Contrasena, TipoDocumento=TipoDocumento, NumeroDocumento=NumeroDocumento)
+
+            db.session.add(new_user)
+            db.session.commit()
+
+            flash('Cuenta creada exitosamente! Por favor, inicia sesión.')
+            return redirect(url_for('login'))
+
+        except SQLAlchemyError as e:
+            db.session.rollback()
+            flash(f'Ocurrió un error al intentar registrar el usuario: {str(e)}')
+            return render_template('Registro.html')
 
     return render_template('Registro.html')
 
