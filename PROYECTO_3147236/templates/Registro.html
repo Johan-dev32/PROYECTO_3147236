@@ -3,67 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro Usuario</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/Registro.css') }}">
+    <title>Registro de Usuario</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .input-field {
+            width: 100%;
+            padding: 0.75rem;
+            margin-top: 0.5rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+    </style>
 </head>
-<body>
-  <div class="form-container">
-    <h2>Registro del Usuario</h2>
-
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for category, message in messages %}
-                <div class="alert alert-{{ category }}">
-                    {{ message }}
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="form-container">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Registro de Usuario</h2>
+        <form action="{{ url_for('registro') }}" method="post" class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-gray-700 font-medium mb-1" for="nombre">Nombre</label>
+                    <input class="input-field" type="text" id="nombre" name="Nombre" required>
                 </div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
-
-    <form id="registroForm" method="post" action="/registro">
-        <label for="nombres">Nombres</label>
-        <input type="text" id="Nombre" name="nombres" placeholder="Escribe tus nombres" required>
-        <span class="error" id="errorNombres"></span>
-
-        <label for="apellidos">Apellidos</label>
-        <input type="text" id="Apellido" name="apellidos" placeholder="Escribe tus apellidos" required>
-        <span class="error" id="errorApellidos"></span>
-
-        <label for="correoPersonal">Correo Personal</label>
-        <input type="email" id="Correo" name="correoPersonal" placeholder="@gmail.com" required>
-        <span class="error" id="errorCorreoPersonal"></span>
-
-        <label for="contrasena">Contraseña</label>
-        <input type="password" id="Contrasena" name="contrasena" minlength="8" placeholder="digite la contraseña" required>
-        <small>Mínimo 8 caracteres</small>
-        <span class="error" id="errorContrasena"></span>
-
-        <label for="numDoc">Número de Documento</label>
-        <input type="text" id="NumeroDocumento" name="numDoc" placeholder="digite su documento" required>
-        <span class="error" id="errorNumDoc"></span>
-
-        <label for="telefono">Teléfono</label>
-        <input type="tel" id="Telefono" name="telefono" placeholder="digite su numero de celular" required>
-        <span class="error" id="errorTelefono"></span>
-
-        <label>Dirección</label>
-        <input type="text" name="direccion" placeholder="Digite su dirección">
-
-        <label>Rol</label>
-        <div class="radio-group">
-            <label><input type="radio" name="rol" value="estudiante"> Estudiante</label>
-            <label><input type="radio" name="rol" value="docente"> Docente</label>
-            <label><input type="radio" name="rol" value="acudiente"> Acudiente</label>
-            <label><input type="radio" name="rol" value="administrador"> Administrador</label>
-        </div>
-        <span class="error" id="errorRol"></span>
-        
-        <div class="buttons">
-            <button type="submit" class="btn">Confirmar</button>
-            <button type="reset" class="btn">Guardar Datos</button>
-        </div>
-    </form>
-    <p class="nota">Se le notificará en el correo electrónico personal su confirmación de usuario</p>
-  </div>
+                <div>
+                    <label class="block text-gray-700 font-medium mb-1" for="apellido">Apellido</label>
+                    <input class="input-field" type="text" id="apellido" name="Apellido" required>
+                </div>
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium mb-1" for="correo">Correo Electrónico</label>
+                <input class="input-field" type="email" id="correo" name="Correo" required>
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium mb-1" for="contrasena">Contraseña</label>
+                <input class="input-field" type="password" id="contrasena" name="Contrasena" required>
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium mb-1" for="numero-documento">Número de Documento</label>
+                <input class="input-field" type="text" id="numero-documento" name="NumeroDocumento" required>
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium mb-1" for="telefono">Teléfono</label>
+                <input class="input-field" type="tel" id="telefono" name="Telefono" required>
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium mb-1" for="direccion">Dirección</label>
+                <input class="input-field" type="text" id="direccion" name="Direccion" required>
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium mb-1" for="rol">Rol</label>
+                <select class="input-field" id="rol" name="Rol" required>
+                    <option value="" disabled selected>Selecciona un rol</option>
+                    <option value="Administrador">Administrador</option>
+                    <option value="Docente">Docente</option>
+                    <option value="Estudiante">Estudiante</option>
+                    <option value="Acudiente">Acudiente</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium mb-1" for="genero">Género</label>
+                <select class="input-field" id="genero" name="Genero">
+                    <option value="" selected>Sin especificar</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+            <button type="submit" class="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">
+                Registrar
+            </button>
+            <p class="text-center text-gray-600 mt-4">¿Ya tienes una cuenta? <a href="{{ url_for('login') }}" class="text-blue-600 hover:underline">Inicia sesión</a></p>
+        </form>
+    </div>
 </body>
 </html>
