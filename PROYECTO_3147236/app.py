@@ -73,7 +73,7 @@ def login():
 
 
 
-@app.route('/Paginainicio')
+@app.route('/paginainicio')
 def paginainicio():
     return render_template('Paginainicio.html')
 
@@ -92,6 +92,10 @@ def profesores():
 @app.route('/manual')
 def manual():
     return render_template('ManualUsuario.html')
+
+@app.route('/resumen')
+def resumen():
+    return render_template('ResumenSemanal.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

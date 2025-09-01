@@ -52,8 +52,15 @@ header .btn-outline-primary {
 .btn-edunotas {
     background-color: #050733ff; 
     color: rgb(255, 255, 255);        
-    margin-left: 850px;
+    margin-left: 800px;
+
 }
+.btn-usuario {
+  background-color: #050733ff; 
+    color: rgb(255, 255, 255);        
+    margin-left: 10px;
+}
+
 
 header .btn-outline-primary:hover {
   background-color: white;
