@@ -99,5 +99,10 @@ def comunicacion():
 def materialapoyo():
    return render_template('MaterialApoyo.html')                           
                            
+                           
+@app.route('/noticia1')
+def noticia1():
+    return render_template('Noticia1.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
