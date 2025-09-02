@@ -44,13 +44,15 @@ with app.app_context():
 
 # --- RUTAS DE LA APLICACIÓN ---
 
-@app.route('/')
-def index():
-    return render_template('Paginainicio.html')
+
+@app.route('/paginainicio')
+def paginainicio():
+    return render_template('PaginaInicio.html')
 
 @app.route('/notas')
 def notas():
     return render_template('Notas.html')
+
 
 @app.route('/observador')
 def observador():
@@ -63,6 +65,24 @@ def profesores():
 @app.route('/manual')
 def manual():
     return render_template('ManualUsuario.html')
+
+@app.route('/resumensemanal')
+def resumensemanal():
+    return render_template('ResumenSemanal.html')
+
+@app.route('/registrotutorias')
+def registrotutorias():
+    return render_template('RegistroTutorías.html')
+
+@app.route('/comunicacion')
+def comunicacion():
+    return render_template('Comunicación.html')
+
+@app.route('/materialapoyo')
+def materialapoyo():
+    return render_template('MaterialApoyo.html')
+
+
 
 
 @app.route('/registro', methods=['GET', 'POST'])
@@ -137,7 +157,7 @@ def login():
         if user and check_password_hash(user.Contrasena, password):
             login_user(user)
             flash('Has iniciado sesión con éxito!')
-            return redirect(url_for('dashboard'))
+            return redirect(url_for('paginainicio'))
         else:
             flash('Credenciales inválidas. Por favor, revisa tu correo y contraseña.')
             return redirect(url_for('login'))

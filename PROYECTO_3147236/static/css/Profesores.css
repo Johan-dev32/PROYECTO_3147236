@@ -168,6 +168,11 @@ tr:hover {
   background: #f1f1f1;
 }
 
+.offcanvas {
+  font-size: 25px;
+}
+
+
 .offcanvas-title{
   margin-left: 40px;
   font-weight: bold;
