@@ -44,6 +44,10 @@ with app.app_context():
 
 # --- RUTAS DE LA APLICACIÓN ---
 
+@app.route('/')
+def index():
+   return render_template("Login.html")
+
 
 @app.route('/paginainicio')
 def paginainicio():
@@ -52,6 +56,7 @@ def paginainicio():
 @app.route('/notas')
 def notas():
     return render_template('Notas.html')
+
 
 
 @app.route('/observador')
