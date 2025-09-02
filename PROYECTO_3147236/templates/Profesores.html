@@ -63,12 +63,21 @@
 </div>
 <div class="offcanvas-body">
   <ul class="nav flex-column">
-  <li class="nav-item"><a  class="nav-link text-white">Inicio</a></li>
-  <li class="nav-item"><a  class="nav-link text-white">Notas</a></li>
-  <li class="nav-item"><a   class="nav-link text-white">Observador</a></li>
-  <li class="nav-item"><a  class="nav-link text-white">Profesores</a></li>
-  <li class="nav-item"><a  class="nav-link text-white">Manual del Usuario</a></li>
+  <li class="nav-item"><a href="{{ url_for('index') }}" class="nav-link text-white">Inicio</a></li>
+  <a class="nav-link text-white" data-bs-toggle="collapse" href="#submenuNotas">
+    Notas <i class="bi bi-caret-down-fill"></i>
+  </a>
+
+  <div class="collapse" id="submenuNotas">
+    <ul class="nav flex-column ms-3">
+     <li class="nav-item"><a href="{{ url_for('notas') }}" class="nav-link text-white">Consultar Notas</a></li>
+    </ul>
+  </div>
+  <li class="nav-item"><a href="{{ url_for('observador') }}" class="nav-link text-white">Observador</a></li>
+  <li class="nav-item"><a href="{{ url_for('profesores') }}" class="nav-link text-white">Profesores</a></li>
+  <li class="nav-item"><a href="{{ url_for('manual') }}" class="nav-link text-white">Manual del Usuario</a></li>
  </ul>
+ </div>
  </div>
 </div>
 
