@@ -143,3 +143,8 @@ header .btn-outline-primary:hover {
 .form-label{
   font-weight: bold;
 }
+.palo{
+  font-size: 200px;
+  margin-left: 400px;
+  margin-top: -200px;
+}
