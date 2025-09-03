@@ -181,5 +181,8 @@ def logout():
     flash('Has cerrado sesión.')
     return redirect(url_for('index'))
 
+#sub-inicio osea que ya no son del inicio si no de otras funciones
+
+
 if __name__ == '__main__':
     app.run(debug=True)
