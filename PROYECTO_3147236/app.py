@@ -53,6 +53,11 @@ def index():
 def paginainicio():
     return render_template('PaginaInicio.html')
 
+@app.route('/perfil')
+@login_required
+def perfil():
+    return render_template('perfil.html', usuario=current_user)
+
 @app.route('/notas')
 def notas():
     return render_template('Notas.html')
@@ -180,6 +185,9 @@ def logout():
     logout_user()
     flash('Has cerrado sesión.')
     return redirect(url_for('index'))
+
+#sub-inicio osea que ya no son del inicio si no de otras funciones
+
 
 if __name__ == '__main__':
     app.run(debug=True)
