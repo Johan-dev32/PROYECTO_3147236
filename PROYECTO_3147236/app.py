@@ -53,6 +53,11 @@ def index():
 def paginainicio():
     return render_template('PaginaInicio.html')
 
+@app.route('/perfil')
+@login_required
+def perfil():
+    return render_template('perfil.html', usuario=current_user)
+
 @app.route('/notas')
 def notas():
     return render_template('Notas.html')
