@@ -6,8 +6,9 @@
   <title>Perfil Usuario</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/perfil.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/Perfil.css') }}">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
   <header class="d-flex align-items-center p-3 border-bottom w-100">
@@ -42,7 +43,8 @@
     id="dropdownMenuButton" 
     data-bs-toggle="dropdown" 
     aria-expanded="false">
-    <span class="bi bi-person-lines-fill"></span>
+    <span class="bi bi-person-lines-fill"><div class="user-info"><span>{{ usuario.Nombre }} {{ usuario.Apellido }}</span>
+    </div></span>
   </button>
 
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -78,3 +80,23 @@
  </div>
  </div>
 </div>
+
+<!-- Contenedor del perfil -->
+  <section class="perfil-container">
+    <div class="perfil-header">
+      <i class="fa-solid fa-user perfil-icon"></i>
+    </div>
+    <div class="perfil-info">
+      <h2>Perfil de Usuario ({{ usuario.Rol }})</h2>
+      <p><strong>Nombre completo:</strong> {{ usuario.Nombre }} {{ usuario.Apellido }}</p>
+      <p><strong>Tipo de documento:</strong> {{ usuario.TipoDocumento }}</p>
+      <p><strong>Número de documento:</strong> {{ usuario.NumeroDocumento }}</p>
+      <p><strong>Número de contacto / Teléfono:</strong> {{ usuario.Telefono }}</p>
+      <p><strong>Correo electrónico:</strong> {{ usuario.Correo }}</p>
+      <p><strong>Dirección de residencia:</strong> {{ usuario.Direccion }}</p>
+      <p><strong>Género:</strong> {{ usuario.Genero }}</p>
+      <p><strong>Estado:</strong> {{ usuario.Estado }}</p>
+    </div>
+  </section>
+</body>
+</html>
