@@ -188,6 +188,9 @@ def logout():
 
 #sub-inicio osea que ya no son del inicio si no de otras funciones
 
+@app.route('/materialapoyo2')
+def materialapoyo2():
+    return render_template('MaterialApoyo2.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
