@@ -15,7 +15,6 @@ header {
   color: #050733ff;
   font-size: 40px;
   font-weight: bolder;
-  font-family: 'Trebuchet MS', sans-serif;
   margin: 0;
   margin-left: 60px;
 }
@@ -36,7 +35,7 @@ header .btn-dark {
   margin-left: 10px;
 }
 
-/*  menu_des  */
+/* menú lateral */
 #sidebar {
   width: 220px;
   min-height: 100vh;
@@ -63,64 +62,18 @@ header .btn-dark {
   font-size: 22px;
 }
 
-.logo-container {
-  width: auto;
-  height: auto;
+/* tarjeta de curso */
+.card {
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.logo-container img {
-  max-width: 250px; 
-  height: auto;
-}
-
-
-/* titulos */
-
-.titulo-principal {
-  font-size: 3rem;      
-  font-weight: 900;      
-  color: #050733ff;      
-}
-
-.subtitulo {
-  font-size: 2rem;       
-  font-weight: 700;
-  color: #050733ff;        
-}
-
-.descripcion {
-  font-size: 1.3rem;     
-  color: #555;           
-}
-
-section.bg-light {
-  margin-top: 10px !important;
-  padding-top: 30px !important;
-}
-/* los cuadros de curso */
-.curso-card {
-  border: 2px solid #050733ff;
-  border-radius: 10px;
-  transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.curso-card:hover {
-  transform: scale(1.05);
-  background-color: #eef5ff;
-}
-
-.curso-card .card-title {
-  font-size: 2rem;
+.card-title {
   font-weight: bold;
+  font-size: 28px;
   color: #050733ff;
 }
 
-.curso-card .btn {
-  margin-top: 10px;
-  background-color: #050733ff;
-  border: none;
-}
-
-.curso-card .btn:hover {
-  background-color: #3b61ea;
+.form-label {
+  font-weight: bold;
 }

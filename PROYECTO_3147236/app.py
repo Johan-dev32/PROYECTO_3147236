@@ -93,7 +93,10 @@ def materialapoyo():
     return render_template('MaterialApoyo.html')
 
 
-
+#Conexión de los cursos
+@app.route('/notas/<int:curso_id>')
+def notas_curso(curso_id):
+    return render_template("notas_curso.html", curso_id=curso_id)
 
 @app.route('/registro', methods=['GET', 'POST'])
 def registro():
