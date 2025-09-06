@@ -67,6 +67,11 @@ header .btn-outline-primary:hover {
   background-color: white;
   color: #ffffff;
 }
+
+.offcanvas {
+  font-size: 25px;
+}
+
 .offcanvas-title{
   margin-left: 40px;
   font-weight: bold;
