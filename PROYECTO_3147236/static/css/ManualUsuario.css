@@ -1,8 +1,8 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: #f5f5f5;
-  line-height: 1.6;
+.body {
+  background-color: #f8f9fa; 
+  font-family: 'Trebuchet MS', sans-serif;
+  color: #212529;
+
 }
  #sidebar {
   width: 220px;
@@ -56,7 +56,7 @@ header .btn-outline-primary {
 .btn-edunotas {
     background-color: #050733ff; 
     color: rgb(255, 255, 255);        
-    margin-left: 700px;
+    margin-left: 730px;
 
 }
 .btn-usuario {
@@ -75,9 +75,10 @@ header .btn-outline-primary:hover {
   font-weight: bold;
   font-size: 30px ;
 }
-.nav-item{
+.offcanvas{
   font-weight: bold;
   font-size: 22px;
+
 }
 .titulo{
   margin-left:600px;
@@ -209,4 +210,18 @@ li {
   border-left: 4px solid #0073e6;
   margin-top: 10px;
   font-size: 14px;
+}
+.menu-btn{
+
+  background-color: #050733ff;
+  color: rgb(255, 255, 255);
+  margin-top: 30px;
+  margin-left: 60px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.menu-btn:hover {
+  background-color: #ffffff; 
+  color: #ff0000;
 }

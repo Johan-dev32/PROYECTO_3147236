@@ -53,7 +53,7 @@ header .btn-outline-primary {
 .btn-edunotas {
     background-color: #050733ff; 
     color: rgb(255, 255, 255);        
-    margin-left: 600px;
+    margin-left: 800px;
 
 }
 .btn-usuario {
@@ -72,7 +72,7 @@ header .btn-outline-primary:hover {
   font-weight: bold;
   font-size: 30px ;
 }
-.nav-item{
+.offcanvas{
   font-weight: bold;
   font-size: 22px;
 }

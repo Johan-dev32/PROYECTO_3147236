@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+html: <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -12,71 +12,97 @@
 </head>
 <body>
   <header class="d-flex align-items-center p-3 border-bottom w-100">
-<button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
-  <i class="bi bi-list"></i>
-</button>
-<h2 class="titulo-header mx-4 mb-0">| COLEGIO FE Y ALEGRIA</h2>
+    <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
+      <i class="bi bi-list"></i>
+    </button>
+    <h2 class="titulo-header mx-4 mb-0">| COLEGIO FE Y ALEGRIA</h2>
 
+    <div class="dropdown">
+      <button class="btn btn-edunotas position-relative dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        <span class="bi bi-envelope-fill"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li><a class="dropdown-item" href="#">Ajustes</a></li>
+        <li><a class="dropdown-item" href="#">Opción 2</a></li>
+        <li><a class="dropdown-item" href="#">Opción 3</a></li>
+      </ul>
+    </div>
 
-<div class="dropdown">
-  <button 
-    class="btn btn-edunotas position-relative dropdown-toggle" 
-    type="button" 
-    id="dropdownMenuButton" 
-    data-bs-toggle="dropdown" 
-    aria-expanded="false">
-    <span class="bi bi-envelope-fill"></span>
-  </button>
+    <div class="dropdown">
+      <button class="btn btn-usuario dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        <span class="bi bi-person-lines-fill"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li><a class="dropdown-item" href="{{url_for('perfil')}}">Perfil</a></li>
+        <li><a class="dropdown-item" href="#">Configuración</a></li>
+        <li><a class="dropdown-item" href="{{url_for('login')}}">Cerrar sesión</a></li>
+      </ul>
+    </div>
 
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <li><a class="dropdown-item" href="#">Ajustes</a></li>
-    <li><a class="dropdown-item" href="#">Opción 2</a></li>
-    <li><a class="dropdown-item" href="#">Opción 3</a></li>
-  </ul>
-</div>
+    <div class="offcanvas offcanvas-start text-white" tabindex="-1" id="sidebar">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title">MENU</h5>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="nav flex-column">
+          <li class="nav-item"><a href="{{ url_for('paginainicio') }}" class="nav-link text-white">Inicio</a></li>
+          <a class="nav-link text-white" data-bs-toggle="collapse" href="#submenuNotas">
+            Notas <i class="bi bi-caret-down-fill"></i>
+          </a>
+          <div class="collapse" id="submenuNotas">
+            <ul class="nav flex-column ms-3">
+              <li class="nav-item"><a href="{{ url_for('notas') }}" class="nav-link text-white">Consultar Notas</a></li>
+            </ul>
+          </div>
+          <li class="nav-item"><a href="{{url_for('observador')}}" class="nav-link text-white">Observador</a></li>
+          <li class="nav-item"><a href="{{url_for('profesores')}}" class="nav-link text-white">Profesores</a></li>
+          <li class="nav-item"><a href="{{url_for('manual')}}" class="nav-link text-white">Manual del Usuario</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
 
+  <!-- tabla -->
+  <section class="registro-tutorias container mt-4">
+    <h2 class="text-center">Registro Tutorias</h2>
 
-<div class="dropdown">
-  <button 
-    class="btn btn-usuario dropdown-toggle" 
-    type="button" 
-    id="dropdownMenuButton" 
-    data-bs-toggle="dropdown" 
-    aria-expanded="false">
-    <span class="bi bi-person-lines-fill"></span>
-  </button>
+    <button class="btn-tutoria">Agregar tutoría</button>
 
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <li><a class="dropdown-item" href="{{url_for('perfil')}}">Perfil</a></li>
-    <li><a class="dropdown-item" href="#">Configuración</a></li>
-    <li><a class="dropdown-item" href="{{url_for('login')}}">Cerrar sesión</a></li>
-  </ul>
-</div>
-
-
-
-
-<div class="offcanvas offcanvas-start text-white" tabindex="-1" id="sidebar">
- <div class="offcanvas-header">
-  <h5 class="offcanvas-title">MENU</h5>
-</div>
-<div class="offcanvas-body">
-  <ul class="nav flex-column">
-  <li class="nav-item"><a  href="{{ url_for('paginainicio') }}" class="nav-link text-white">Inicio</a></li>
-<<<<<<< HEAD
-  <li class="nav-item"><a  href="{{ url_for('notas') }}"  class="nav-link text-white">Notas</a></li>
-=======
-  <li class="nav-item"><a  href="{{ url_for('notas') }}" class="nav-link text-white">Notas</a></li>
->>>>>>> 84aa9eb4e4ee3e8244ba6cabf42b5a04e9e32f22
-  <li class="nav-item"><a  href="{{url_for('observador')}}" class="nav-link text-white">Observador</a></li>
-  <li class="nav-item"><a  href="{{url_for('profesores')}}"class="nav-link text-white">Profesores</a></li>
-  <li class="nav-item"><a  href="{{url_for('manual')}}"class="nav-link text-white">Manual del Usuario</a></li>
- </ul>
- </div>
-</div>
-
-
-  
+    <table class="tabla-tutorias">
+      <tr>
+        <th>Nombre y Apellido</th>
+        <th>Profesor/Administrativo</th>
+        <th>Tema</th>
+        <th>Fecha realizada</th>
+        <th>Motivo</th>
+        <th>Observaciones</th>
+      </tr>
+      <tr>
+        <td>Laura Fernández Ríos</td>
+        <td>Profesora</td>
+        <td>Evaluación de lectura crítica</td>
+        <td>2025-05-14</td>
+        <td>Seguimiento académico</td>
+        <td>Estudiantes con bajo rendimiento.</td>
+      </tr>
+      <tr>
+        <td>Andrés Pérez Mora</td>
+        <td>Administrativo</td>
+        <td>Control de asistencia</td>
+        <td>2025-05-15</td>
+        <td>Revisión de entradas/salidas</td>
+        <td>Se identificaron dos inconsistencias.</td>
+      </tr>
+      <tr>
+        <td>María Rodríguez Oval</td>
+        <td>Profesor</td>
+        <td>Proyecto de Ciencias</td>
+        <td>2025-05-16</td>
+        <td>Organización de feria escolar</td>
+        <td>Aún faltan materiales de dos grupos.</td>
+      </tr>
+    </table>
+  </section>
 
 
 </body>
