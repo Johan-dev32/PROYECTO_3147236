@@ -195,5 +195,9 @@ def logout():
 def materialapoyo2():
     return render_template('MaterialApoyo2.html')
 
+@app.route('/registrotutorias2')
+def registrotutorias2():
+    return render_template('RegistroTutorías2.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
