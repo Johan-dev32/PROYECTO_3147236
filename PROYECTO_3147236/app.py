@@ -92,6 +92,9 @@ def comunicacion():
 def materialapoyo():
     return render_template('MaterialApoyo.html')
 
+@app.route('/reunion')
+def reunion():
+    return render_template('Reunion.html')
 
 #Conexión de los cursos
 @app.route('/notas/<int:curso_id>')

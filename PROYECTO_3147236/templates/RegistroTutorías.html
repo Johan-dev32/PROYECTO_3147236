@@ -66,24 +66,25 @@
   <section class="registro-tutorias container mt-5">
     <h2 class="text-center">REGISTRO DE TUTORIAS</h2>
 
-    <button class="btn-tutoria mt-5"><a  href="{{ url_for('registrotutorias2') }}" class="nav-link text-white fw-bolder">AGREGAR TUTORIAS</a></button>
+    <button class="btn-tutoria mt-5"><a  href="{{ url_for('registrotutorias2') }}" class="nav-link text-white fw-bolder"><i class="bi bi-clipboard2-plus-fill"></i>  AGREGAR TUTORIAS</a></button>
+  <div class="contenedor-tutorias">
+  <table class="tabla-tutorias mt-3">
+    <tr>
+      <th>Nombre Completo</th>
+      <th>Rol</th>
+      <th>Tema</th>
+      <th>Fecha de Realización</th>
+      <th>Curso</th>
+      <th>Nombre del Estudiante</th>
+      <th>Correo</th>
+      <th>Motivo</th>
+      <th>Observaciones</th>
+    </tr>
+  </table>
 
-    <table class="tabla-tutorias mt-3">
-      <tr>
-        <th>Nombre Completo</th>
-        <th>Rol</th>
-        <th>Tema</th>
-        <th>Fecha de Realización</th>
-        <th>Curso</th>
-        <th>Nombre del Estudiante</th>
-        <th>Correo</th>
-        <th>Motivo</th>
-        <th>Observaciones</th>
-      </tr>
-      
-    </table>
-  </section>
-
+  <!-- Contenedor de botones -->
+  <div id="accionesTutorias"></div>
+</div>
 <script src="{{ url_for('static', filename='js/registroTutorias.js') }}"></script>
 </body>
 </html>

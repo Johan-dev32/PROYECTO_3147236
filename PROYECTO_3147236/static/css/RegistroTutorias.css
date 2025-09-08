@@ -110,3 +110,22 @@ header .btn-dark {
 .tabla-tutorias tr:nth-child(even) {
   background-color: #fafafa;
 }
+#accionesTutorias .d-flex {
+  border: 1px solid #333;
+  border-top: none;
+}
+
+.contenedor-tutorias {
+  display: grid;
+  grid-template-columns: auto 50px; /* tabla y columna botones */
+  gap: 10px;
+  align-items: start;
+}
+
+#accionesTutorias {
+  display: flex;
+  margin-top: 60px;
+  margin-bottom: 22px;
+  flex-direction: column;
+  align-items: center;
+}

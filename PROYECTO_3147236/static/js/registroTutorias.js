@@ -25,27 +25,46 @@ function guardarTutoria() {
 // Mostrar los datos guardados en la tabla
 function mostrarTutorias() {
   const tabla = document.querySelector(".tabla-tutorias");
-  if (!tabla) return; // si no existe la tabla, salir
+  const accionesDiv = document.getElementById("accionesTutorias");
+
+  if (!tabla) return;
 
   let tutorias = JSON.parse(localStorage.getItem("tutorias")) || [];
 
-  tutorias.forEach(t => {
-    let fila = `
-      <tr>
-        <td>${t.nombre}</td>
-        <td>${t.rol}</td>
-        <td>${t.tema}</td>
-        <td>${t.fecha}</td>
-        <td>${t.curso}</td>
-        <td>${t.estudiante}</td>
-        <td>${t.correo}</td>
-        <td>${t.motivo}</td>
-        <td>${t.observaciones}</td>
-      </tr>
-    `;
-    tabla.innerHTML += fila;
-  });
-}
+  // limpiar tabla (menos cabecera) y botones
+  tabla.querySelectorAll("tr:not(:first-child)").forEach(tr => tr.remove());
+  accionesDiv.innerHTML = "";
 
+  tutorias.forEach((t, index) => {
+    // fila con datos
+    let fila = document.createElement("tr");
+    fila.innerHTML = `
+      <td>${t.nombre}</td>
+      <td>${t.rol}</td>
+      <td>${t.tema}</td>
+      <td>${t.fecha}</td>
+      <td>${t.curso}</td>
+      <td>${t.estudiante}</td>
+      <td>${t.correo}</td>
+      <td>${t.motivo}</td>
+      <td>${t.observaciones}</td>
+      
+    `;
+    tabla.appendChild(fila);
+
+    // botón eliminar afuera
+    let boton = document.createElement("button");
+    boton.className = "btn btn-danger btn-sm mb-1";
+    boton.innerHTML = `<i class="bi bi-trash3-fill"></i>`;
+    boton.addEventListener("click", () => {
+      tutorias.splice(index, 1);
+      localStorage.setItem("tutorias", JSON.stringify(tutorias));
+      mostrarTutorias();
+    });
+
+    accionesDiv.appendChild(boton);
+  });
+
+}
 // Llamar a mostrarTutorias cuando cargue registrotutorias.html
 document.addEventListener("DOMContentLoaded", mostrarTutorias);
