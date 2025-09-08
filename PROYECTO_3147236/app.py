@@ -96,6 +96,27 @@ def materialapoyo():
 def reunion():
     return render_template('Reunion.html')
 
+@app.route('/acudientes')
+def acudientes():
+    return render_template('Acudientes.html')
+
+@app.route('/estudiantes')
+def estudiantes():
+    return render_template('Estudiantes.html')
+
+@app.route('/usuarios')
+def usuarios():
+    return render_template('Usuarios.html')
+
+@app.route('/asignaturas')
+def asignaturas():
+    return render_template('Asignaturas.html')
+
+@app.route('/horarios')
+def horarios():
+    return render_template('Horarios.html')
+    
+
 #Conexión de los cursos
 @app.route('/notas/<int:curso_id>')
 def notas_curso(curso_id):
