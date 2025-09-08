@@ -28,7 +28,6 @@ header .btn-dark {
 .btn-edunotas {
   background-color: #050733ff;
   color: #fff;
-  margin-left: 800px;
 }
 
 .btn-usuario {
@@ -57,7 +56,6 @@ header .btn-dark {
   margin-left: 40px;
   font-weight: bold;
   font-size: 30px;
-  
 }
 
 .nav-item {
@@ -74,55 +72,7 @@ header .btn-dark {
   max-width: 250px; 
   height: auto;
 }
-
-
-/* titulos */
-
-.titulo-principal {
-  font-size: 40px;      
-  font-weight: bold;      
-  color: #050733ff;      
-}
-
-.subtitulo {
-  font-size: 2rem;       
-  font-weight: 700;
-  color: #050733ff;        
-}
-
-.descripcion {
-  font-size: 1.3rem;     
-  color: #555;           
-}
-
-section.bg-light {
-  margin-top: 10px !important;
-  padding-top: 30px !important;
-}
-/* los cuadros de curso */
-.curso-card {
-  border: 2px solid #050733ff;
-  border-radius: 10px;
-  transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.curso-card:hover {
-  transform: scale(1.05);
-  background-color: #eef5ff;
-}
-
-.curso-card .card-title {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #050733ff;
-}
-
-.curso-card .btn {
-  margin-top: 10px;
-  background-color: #050733ff;
-  border: none;
-}
-
-.curso-card .btn:hover {
-  background-color: #3b61ea;
+.titulo{
+ font-weight: bold;
+ font-size: 35px;
 }

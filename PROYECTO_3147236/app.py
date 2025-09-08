@@ -56,7 +56,7 @@ def paginainicio():
 @app.route('/Perfil')
 @login_required
 def perfil():
-    return render_template('Perfil.html', usuario=current_user)
+    return render_template('perfil.html', usuario=current_user)
 
 @app.route('/notas')
 def notas():
@@ -194,6 +194,10 @@ def logout():
 @app.route('/materialapoyo2')
 def materialapoyo2():
     return render_template('MaterialApoyo2.html')
+
+@app.route('/registrotutorias2')
+def registrotutorias2():
+    return render_template('RegistroTutorías2.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -12,29 +12,21 @@
 </head>
 <body>
   <header class="d-flex align-items-center p-3 border-bottom w-100">
-<button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
-  <i class="bi bi-list"></i>
-</button>
-<h2 class="titulo-header mx-4 mb-0">| COLEGIO FE Y ALEGRIA</h2>
+    <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
+      <i class="bi bi-list"></i>
+    </button>
+    <h2 class="titulo-header mx-4 mb-0">| COLEGIO FE Y ALEGRIA</h2>
 
-
-<div class="dropdown">
-  <button 
-    class="btn btn-edunotas position-relative dropdown-toggle" 
-    type="button" 
-    id="dropdownMenuButton" 
-    data-bs-toggle="dropdown" 
-    aria-expanded="false">
-    <span class="bi bi-envelope-fill"></span>
-  </button>
-
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <li><a class="dropdown-item" href="#">Ajustes</a></li>
-    <li><a class="dropdown-item" href="#">Opción 2</a></li>
-    <li><a class="dropdown-item" href="#">Opción 3</a></li>
-  </ul>
-</div>
-
+    <div class="dropdown">
+      <button class="btn btn-edunotas position-relative dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        <span class="bi bi-envelope-fill"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li><a class="dropdown-item" href="#">Ajustes</a></li>
+        <li><a class="dropdown-item" href="#">Opción 2</a></li>
+        <li><a class="dropdown-item" href="#">Opción 3</a></li>
+      </ul>
+    </div>
 
 <div class="dropdown">
   <button 
@@ -48,23 +40,26 @@
 
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <li><a class="dropdown-item" href="{{url_for('perfil')}}">Perfil</a></li>
-    <li><a class="dropdown-item" href="#">Observador</a></li>
+    <li><a class="dropdown-item" href="#">Configuración</a></li>
     <li><a class="dropdown-item" href="{{url_for('login')}}">Cerrar sesión</a></li>
   </ul>
 </div>
-
-
-
 
 <div class="offcanvas offcanvas-start text-white" tabindex="-1" id="sidebar">
  <div class="offcanvas-header">
   <h5 class="offcanvas-title">MENU</h5>
 </div>
-<div class="offcanvas-body">
-  <ul class="nav flex-column">
+<div class="offcanvas-body">  <ul class="nav flex-column">
   <li class="nav-item"><a  href="{{ url_for('paginainicio') }}" class="nav-link text-white">Inicio</a></li>
-  <li class="nav-item"><a  href="{{ url_for('notas') }}"  class="nav-link text-white">Notas</a></li>
-  <li class="nav-item"><a  href="{{ url_for('notas') }}" class="nav-link text-white">Notas</a></li>
+ <a class="nav-link text-white" data-bs-toggle="collapse" href="#submenuNotas">
+          Notas <i class="bi bi-caret-down-fill"></i>
+        </a>
+        <div class="collapse" id="submenuNotas">
+          <ul class="nav flex-column ms-3">
+            <li class="nav-item"><a href="{{ url_for('notas') }}" class="nav-link text-white">Consultar Notas</a></li>
+          </ul>
+        </div>
+
   <li class="nav-item"><a  href="{{url_for('observador')}}" class="nav-link text-white">Observador</a></li>
   <li class="nav-item"><a  href="{{url_for('profesores')}}"class="nav-link text-white">Profesores</a></li>
   <li class="nav-item"><a  href="{{url_for('manual')}}"class="nav-link text-white">Manual del Usuario</a></li>
@@ -72,6 +67,8 @@
  </div>
 </div>
 
+
+  
 
 
 </body>
