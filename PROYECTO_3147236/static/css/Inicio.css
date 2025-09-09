@@ -132,8 +132,19 @@ color: white;
   font-size: 30px ;
 }
 .nav-item{
+  margin-bottom: 10px;
+}
+#sidebar .nav-link {
+  font-size: 18px;   /* tamaño menú hamburguesa */
   font-weight: bold;
-  font-size: 22px;
+}
+
+/* SOLO botones nav-pills (Resumen, Registro, Comunicación, etc.) */
+.nav-pills .nav-link {
+  font-size: 25px;   /* tamaño botones nav */
+  color: #050733ff !important; 
+  font-weight: bold;
+
 }
 
 .nav-pills .nav-link {

@@ -1,1 +1,116 @@
-Hola
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Escolar</title>
+  <link rel="stylesheet" href="Observador.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Control de Cupos</h1>
+    <div class="usuario">Usuario 👤</div>
+  </header>a
+
+  <!-- 1. CONTROL DE CUPOS -->
+  <section id="seccionCupos">
+    <h2>Control de Cupos</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Estudiantes Registrados</th>
+          <th>Seleccionar Grupo</th>
+          <th>Cupos Disponibles</th>
+          <th>Capacidad Máx.</th>
+        </tr>
+      </thead>
+      <tbody id="tablaCupos">
+        <!-- Se llena desde JS -->
+      </tbody>
+    </table>
+    <button id="btnVerObservador">Revisa tu Observador</button>
+  </section>
+
+  <!-- 2. OBSERVADOR -->
+  <section id="seccionObservador" class="oculto">
+    <h2>Tu Observador</h2>
+    <h3>Observador de Estudiantes</h3>
+    <table id="tablaObservador">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Comportamiento</th>
+          <th>Actitud</th>
+          <th>Avances</th>
+          <th>Dificultades</th>
+          <th>Seguimiento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Aquí está tu lista base -->
+        <tr>
+          <td>Marcos Sanchez</td>
+          <td>Participa en clase</td>
+          <td>Respetuoso</td>
+          <td>Mejoró en matemáticas</td>
+          <td>No entrega tareas</td>
+          <td>Enviado a orientación</td>
+        </tr>
+        <tr>
+          <td>Luis Campos</td>
+          <td>Interrumpe frecuentemente</td>
+          <td>Impulsivo</td>
+          <td>Avanzó en lectura</td>
+          <td>Llega tarde seguido</td>
+          <td>Citación a acudiente</td>
+        </tr>
+        <!-- ... resto de filas ... -->
+      </tbody>
+    </table>
+    <button id="btnAbrirFormulario">Agregar Observación</button>
+  </section>
+
+  <!-- Modal formulario -->
+  <div id="modal-observacion" class="modal oculto">
+    <div class="modal-contenido">
+      <h2>Agregar Observación</h2>
+      <form id="formObservacion">
+        <label for="inputNombre">Nombre del estudiante:</label>
+        <input type="text" id="inputNombre" required>
+
+        <label for="inputComportamiento">Comportamiento:</label>
+        <input type="text" id="inputComportamiento" required>
+
+        <label for="inputActitud">Actitud:</label>
+        <input type="text" id="inputActitud" required>
+
+        <label for="inputAvances">Avances:</label>
+        <input type="text" id="inputAvances" required>
+
+        <label for="inputDificultades">Dificultades:</label>
+        <input type="text" id="inputDificultades" required>
+
+        <label for="inputSeguimiento">Seguimiento:</label>
+        <input type="text" id="inputSeguimiento" required>
+
+        <div class="acciones">
+          <button type="submit" id="btnAgregarObservacion">Agregar</button>
+          <button type="button" id="btnCerrarFormulario">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal éxito -->
+  <div id="modal-Exito" class="modal oculto">
+    <div class="modal-contenido">
+      <h2>✅ Observación agregada con éxito</h2>
+      <button id="CerrarModal()">Aceptar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
