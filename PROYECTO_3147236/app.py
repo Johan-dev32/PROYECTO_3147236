@@ -53,7 +53,7 @@ def index():
 def paginainicio():
     return render_template('PaginaInicio.html')
 
-@app.route('/Perfil')
+@app.route('/perfil')
 @login_required
 def perfil():
     return render_template('perfil.html', usuario=current_user)
@@ -63,14 +63,95 @@ def notas():
     return render_template('Notas.html')
 
 
-
 @app.route('/observador')
 def observador():
     return render_template('Observador.html')
 
 @app.route('/profesores')
+@login_required
 def profesores():
-    return render_template('Profesores.html')
+    docentes = Usuario.query.filter_by(Rol='Docente').all()
+    return render_template('Profesores.html', docentes=docentes)
+
+@app.route('/agregar_docente', methods=['POST'])
+@login_required
+def agregar_docente():
+    try:
+        nombre = request.form['Nombre']
+        apellido = request.form['Apellido']
+        correo = request.form['Correo']
+        numero_doc = request.form['NumeroDocumento']
+        telefono = request.form['Telefono']
+        tipo_doc = "C.C."
+        profesion = request.form['Profesion']
+        ciclo = request.form['Ciclo']
+
+        # Contraseña temporal
+        hashed_password = generate_password_hash("123456")
+
+        nuevo_docente = Usuario(
+            Nombre=nombre,
+            Apellido=apellido,
+            Correo=correo,
+            Contrasena=hashed_password,
+            TipoDocumento=tipo_doc,
+            NumeroDocumento=numero_doc,
+            Telefono=telefono,
+            Rol='Docente',
+            Estado='Activo',
+            Direccion="",
+            Genero="Otro"
+        )
+        db.session.add(nuevo_docente)
+        db.session.commit()
+        flash("Docente agregado correctamente", "success")
+    except SQLAlchemyError as e:
+        db.session.rollback()
+        flash(f"Error al agregar docente: {str(e)}", "danger")
+
+    return redirect(url_for('profesores'))
+
+
+# Actualizar Docente
+@app.route('/actualizar_docente/<int:id>', methods=['POST'])
+def actualizar_docente(id):
+    docente = Usuario.query.get_or_404(id)  # Buscar por ID
+
+    # Asignar valores desde el formulario
+    docente.Nombre = request.form['Nombre']
+    docente.Apellido = request.form['Apellido']
+    docente.TipoDocumento = request.form['TipoDocumento']
+    docente.NumeroDocumento = request.form['NumeroDocumento']
+    docente.Correo = request.form['Correo']
+    docente.Telefono = request.form['Telefono']
+    docente.Direccion = request.form['Profesion']
+    docente.Calle = request.form['Ciclo']
+
+    try:
+        db.session.commit()
+        flash("Docente actualizado correctamente.", "success")
+    except Exception as e:
+        db.session.rollback()
+        flash(f"Error al actualizar: {e}", "danger")
+
+    return redirect(url_for('profesores'))
+
+
+# Eliminar Docente
+@app.route('/eliminar_docente/<int:id>', methods=['POST'])
+@login_required
+def eliminar_docente(id):
+    docente = Usuario.query.get_or_404(id)
+    try:
+        db.session.delete(docente)
+        db.session.commit()
+        flash("Docente eliminado correctamente", "danger")
+    except SQLAlchemyError as e:
+        db.session.rollback()
+        flash(f"Error al eliminar docente: {str(e)}", "danger")
+
+    return redirect(url_for('profesores'))
+
 
 @app.route('/manual')
 def manual():
@@ -92,6 +173,9 @@ def comunicacion():
 def materialapoyo():
     return render_template('MaterialApoyo.html')
 
+@app.route('/reunion')
+def reunion():
+    return render_template('Reunion.html')
 
 #Conexión de los cursos
 @app.route('/notas/<int:curso_id>')

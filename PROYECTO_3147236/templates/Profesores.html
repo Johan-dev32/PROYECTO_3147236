@@ -90,8 +90,6 @@
 
     <div class="actions">
       <button class="add"> Agregar Docente</button>
-      <button class="update"> Actualizar Docente</button>
-      <button class="delete"> Eliminar Docente</button>
     </div>
 
     <div class="search-bar">
@@ -110,38 +108,85 @@
           <th>Ciclo</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>Laura Gómez Torres</td>
-          <td>CC</td>
-          <td>1.023.456.789</td>
-          <td>laura.gomez@institution.edu.co</td>
-          <td>3103456789</td>
-          <td>Educación Física</td>
-          <td>I</td>
-        </tr>
-        <tr>
-          <td>Andrés López Ramírez</td>
-          <td>CC</td>
-          <td>1.041.435.456</td>
-          <td>andres.lopez@institution.edu.co</td>
-          <td>3002456789</td>
-          <td>Informática</td>
-          <td>II</td>
-        </tr>
-        <tr>
-          <td>Camila Díez Herrera</td>
-          <td>CC</td>
-          <td>1.147.987.234</td>
-          <td>camila.diez@institution.edu.co</td>
-          <td>3123456789</td>
-          <td>Matemáticas</td>
-          <td>III</td>
-        </tr>
-      </tbody>
+    <tbody>
+  {% for docente in docentes %}
+  <tr>
+    <td>{{ docente.Nombre }} {{ docente.Apellido }}</td>
+    <td>{{ docente.TipoDocumento }}</td>
+    <td>{{ docente.NumeroDocumento }}</td>
+    <td>{{ docente.Correo }}</td>
+    <td>{{ docente.Telefono }}</td>
+    <td>{{ docente.Direccion or 'Sin registrar' }}</td> <!-- profesión -->
+    <td>{{ docente.Calle or 'N/A' }}</td> <!-- ciclo -->
+    <td>
+      <!-- Botón Editar -->
+      <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editarModal{{ docente.ID_Usuario }}">Editar</button>
+
+      <!-- Botón Eliminar -->
+      <form action="{{ url_for('eliminar_docente', id=docente.ID_Usuario) }}" method="POST" style="display:inline;">
+        <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+      </form>
+    </td>
+  </tr>
+
+  <!-- Modal Editar -->
+  
+  <div class="modal fade" id="editarModal{{ docente.ID_Usuario }}" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content"> <!-- Aquí va modal-content, no en el form -->
+      <form action="{{ url_for('actualizar_docente', id=docente.ID_Usuario) }}" method="POST">
+        <div class="modal-header">
+          <h5>Editar Docente</h5>
+        </div>
+        <div class="modal-body">
+          <input type="text" name="Nombre" value="{{ docente.Nombre }}" class="form-control mb-2">
+          <input type="text" name="Apellido" value="{{ docente.Apellido }}" class="form-control mb-2">
+          <input type="text" name="TipoDocumento" value="{{ docente.TipoDocumento }}" class="form-control mb-2">
+          <input type="text" name="NumeroDocumento" value="{{ docente.NumeroDocumento }}" class="form-control mb-2">
+          <input type="email" name="Correo" value="{{ docente.Correo }}" class="form-control mb-2">
+          <input type="text" name="Telefono" value="{{ docente.Telefono }}" class="form-control mb-2">
+          <input type="text" name="Profesion" value="{{ docente.Direccion }}" class="form-control mb-2">
+          <input type="text" name="Ciclo" value="{{ docente.Calle }}" class="form-control mb-2">
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+    {% endfor %}
+  </tbody>
     </table>
+
+    <div class="modal fade" id="agregarModal" tabindex="-1">
+  <div class="modal-dialog">
+    <form action="{{ url_for('agregar_docente') }}" method="POST" class="modal-content">
+      <div class="modal-header"><h5>Agregar Docente</h5></div>
+      <div class="modal-body">
+        <input type="text" name="Nombre" placeholder="Nombre" class="form-control mb-2">
+        <input type="text" name="Apellido" placeholder="Apellido" class="form-control mb-2">
+        <input type="text" name="TipoDocumento" placeholder="Tipo Documento" class="form-control mb-2">
+        <input type="text" name="NumeroDocumento" placeholder="Número Documento" class="form-control mb-2">
+        <input type="email" name="Correo" placeholder="Correo Institucional" class="form-control mb-2">
+        <input type="text" name="Telefono" placeholder="Teléfono" class="form-control mb-2">
+        <input type="text" name="Profesion" placeholder="Profesión" class="form-control mb-2">
+        <input type="text" name="Ciclo" placeholder="Ciclo" class="form-control mb-2">
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.querySelector(".add").addEventListener("click", () => {
+    new bootstrap.Modal(document.getElementById("agregarModal")).show();
+  });
+</script>
   </main>
 
-  <script src="profesores.js"></script>
+  <script src="/static/js/profesores.js"></script>
 </body>
 </html>

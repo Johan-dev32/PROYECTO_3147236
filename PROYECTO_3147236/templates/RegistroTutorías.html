@@ -28,22 +28,16 @@
       </ul>
     </div>
 
-<div class="dropdown">
-  <button 
-    class="btn btn-usuario dropdown-toggle" 
-    type="button" 
-    id="dropdownMenuButton" 
-    data-bs-toggle="dropdown" 
-    aria-expanded="false">
-    <span class="bi bi-person-lines-fill"></span>
-  </button>
-
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <li><a class="dropdown-item" href="{{url_for('perfil')}}">Perfil</a></li>
-    <li><a class="dropdown-item" href="#">Configuración</a></li>
-    <li><a class="dropdown-item" href="{{url_for('login')}}">Cerrar sesión</a></li>
-  </ul>
-</div>
+    <div class="dropdown">
+      <button class="btn btn-usuario dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        <span class="bi bi-person-lines-fill"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li><a class="dropdown-item" href="{{url_for('perfil')}}">Perfil</a></li>
+        <li><a class="dropdown-item" href="#">Configuración</a></li>
+        <li><a class="dropdown-item" href="{{url_for('login')}}">Cerrar sesión</a></li>
+      </ul>
+    </div>
 
 <div class="offcanvas offcanvas-start text-white" tabindex="-1" id="sidebar">
  <div class="offcanvas-header">
@@ -66,10 +60,31 @@
  </ul>
  </div>
 </div>
+</header>
 
+  <!-- tabla -->
+  <section class="registro-tutorias container mt-5">
+    <h2 class="text-center">REGISTRO DE TUTORIAS</h2>
 
-  
+    <button class="btn-tutoria mt-5"><a  href="{{ url_for('registrotutorias2') }}" class="nav-link text-white fw-bolder"><i class="bi bi-clipboard2-plus-fill"></i>  AGREGAR TUTORIAS</a></button>
+  <div class="contenedor-tutorias">
+  <table class="tabla-tutorias mt-3">
+    <tr>
+      <th>Nombre Completo</th>
+      <th>Rol</th>
+      <th>Tema</th>
+      <th>Fecha de Realización</th>
+      <th>Curso</th>
+      <th>Nombre del Estudiante</th>
+      <th>Correo</th>
+      <th>Motivo</th>
+      <th>Observaciones</th>
+    </tr>
+  </table>
 
-
+  <!-- Contenedor de botones -->
+  <div id="accionesTutorias"></div>
+</div>
+<script src="{{ url_for('static', filename='js/registroTutorias.js') }}"></script>
 </body>
 </html>

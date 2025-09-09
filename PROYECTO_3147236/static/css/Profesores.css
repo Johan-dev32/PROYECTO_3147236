@@ -117,10 +117,11 @@ header .btn-outline-primary:hover {
 
 /* Botones */
 .actions {
-  margin-bottom: 10px;
+  margin-bottom: 0;
+  margin-top: 20px;
   display: flex;
-  gap: 10px;
-  justify-content: center;
+  gap: 5px;
+  justify-content: flex-start;
 }
 
 .actions button {
