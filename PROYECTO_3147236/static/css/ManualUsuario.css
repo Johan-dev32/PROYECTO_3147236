@@ -74,10 +74,21 @@ header .btn-outline-primary:hover {
   margin-left: 40px;
   font-weight: bold;
   font-size: 30px ;
+
 }
-.offcanvas{
+#sidebar .nav-link {
+  font-size: 18px;   /* tamaño menú hamburguesa */
   font-weight: bold;
-  font-size: 22px;
+  margin-left: -20px;
+}
+
+/* SOLO botones nav-pills (Resumen, Registro, Comunicación, etc.) */
+.nav-pills .nav-link {
+  font-size: 25px;   /* tamaño botones nav */
+  color: #050733ff !important; 
+  font-weight: bold;
+
+
 
 }
 .titulo{
