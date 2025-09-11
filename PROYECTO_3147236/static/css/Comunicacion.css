@@ -1,168 +1,254 @@
+/* ========== VARIABLES GLOBALES ========== */
+:root {
+  --harvard-red: #a51c30;
+  --muted: #f3f4f6;
+  --card-bg: #ffffff;
+  --accent: #2b7a78;
+  --danger: #c0392b;
+  --success: #27ae60;
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* ========== BASE ========== */
 body {
-  font-family: 'Trebuchet MS', sans-serif;
-  /* Hace que la imagen cubra toda la pantalla */
-  background-repeat: no-repeat; /* Evita que se repita */
-   /* Hace que se quede fija al hacer scroll */
-  background-position: center;  /* Centra la imagen */
-  background-attachment: scroll;
-  height: 600px;
-}
-
-#sidebar {
-  width: 220px;
-  min-height: 100vh;
-  background: linear-gradient(180deg, #3b61ea, #fc8e75);
-
-}
-
-#sidebar .nav-link:hover {
-  background: linear-gradient(180deg, #3b61ea, #fc8e75);
-  border-radius: 8px;
-  
-}
-header {
-  background-color: rgb(255, 255, 255); /* azul */
-  color: rgb(207, 0, 0); 
-}
-
-/* Cambiar color del título */
-.titulo-header {
- 
-  color: #050733ff;
-  font-size: 40px;
-  font-weight: bolder;
-  font-family: 'Trebuchet MS', sans-serif;
   margin: 0;
-  margin-left: 60px;  /* lo acercas/separas de la izquierda */
+  background: linear-gradient(#fafafa, #f1f5f9);
+  color: #222;
 }
 
-/* Botón hamburguesa con color claro */
-header .btn-dark {
-  background-color: #050733ff;
-  border: none;
+.container {
+  max-width: 980px;
+  margin: 28px auto;
+  padding: 18px;
 }
 
-
-/* Botón de iniciar sesión */
-header .btn-outline-primary {
-  color: #050733ff;
-  border-color: #050733ff;
-  margin-left: 900px;
-
-}
-.btn-edunotas {
-    background-color: #050733ff; 
-    color: rgb(255, 255, 255);        
-    margin-left: 800px;
-
-}
-.btn-usuario {
-  background-color: #050733ff; 
-    color: rgb(255, 255, 255);        
-    margin-left: 10px;
+/* ========== HEADER ========== */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
 }
 
-
-header .btn-outline-primary:hover {
-  background-color: white;
-  color: #ffffff;
-}
-.offcanvas-title{
-  margin-left: 40px;
-  font-weight: bold;
-  font-size: 30px ;
-}
-.nav-item{
-  font-weight: bold;
-  font-size: 22px;
-
-}
-#sidebar .nav-link {
-  font-size: 18px;   /* tamaño menú hamburguesa */
-  font-weight: bold;
-  margin-bottom: 10px;
+header h1 {
+  font-size: 24px;
+  margin: 0;
+  color: var(--harvard-red);
 }
 
-/* SOLO botones nav-pills (Resumen, Registro, Comunicación, etc.) */
-.nav-pills .nav-link {
-  font-size: 25px;   /* tamaño botones nav */
-  color: #050733ff !important; 
-  font-weight: bold;
-
+header .user {
+  font-size: 14px;
+  color: #666;
 }
 
-.titulo{
-  margin-left:600px;
-  font-size: 40px;
-  margin-top: 30px;
-  font-weight: bold;
-}
-.texto1{
-  margin-left: 612px;
-  font-size: 25px;
-  font-weight: bold;
-  margin-bottom: 80px;
-}
-.card {
-  max-width: 800px;   /* ancho máximo */
-  max-height: 4000px;
-  /* centrar horizontalmente */
-  font-size: 11 px;  /* letras un poco más pequeñas */
-}
-.custom-card {
-  margin-left: 250px;  /* lo mueve a la derecha */
-}
-.card-header{
-  background-color: #050733ff;
-}
-.btn-menu{
-  margin-left: 100px;
-  background-color: #050733ff; 
-  color: #ffffff;
-  margin-bottom: 20px;
-  
-}
-.btn-subir{
-  background-color: rgb(34, 208, 14);
-  color: #ffffff;
-}
-.btn-outline-secondary{
-  background-color: #ffffff;
-}
-.form-select {
-  width: 300px;    
-  min-height: 70px;         
-  margin-top: -250px;   
-  margin-left: 50px;     
-  font-size: 1.1rem;   
-  text-align: center;    /* texto más grande */
-  font-weight: bold;          /* un poco más grueso */
-  border: 2px solid #050733ff; /* azul Bootstrap */
-  border-radius: 8px;        
-  box-shadow: 0 4px 8px #050733ff; /* sombra sutil */
-  transition: all 0.3s ease;
+/* ========== LAYOUT ========== */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 560px;
+  gap: 18px;
 }
 
 .card {
-  border-radius: 15px;
-  margin-left: 250px;
-  margin-top: -30px;
-}
-
-h2 {
-  font-weight: bold;
-  color: #050733ff;
-}
-
-label {
-  font-weight: 500;
-}
-
-textarea {
-  resize: none;
-}
-
-button {
+  background: var(--card-bg);
   border-radius: 10px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+.left .section {
+  margin-bottom: 16px;
+}
+
+/* ========== FORMULARIOS Y SELECTS ========== */
+label {
+  display: block;
   font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: #333;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+
+/* ========== LISTA DE CURSOS ========== */
+.courses-list {
+  max-height: 220px;
+  overflow: auto;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  padding: 8px;
+  background: linear-gradient(#fff, #fbfbfb);
+}
+
+/* ========== BOTONES DE TIPO ========== */
+.type-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.btn-type {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #cfcfcf;
+  background: #fff;
+  cursor: pointer;
+}
+
+.btn-type.active {
+  background: var(--harvard-red);
+  color: white;
+  border-color: var(--harvard-red);
+}
+
+/* ========== SUBIDA DE ARCHIVOS ========== */
+.file-box {
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  padding: 18px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.file-name {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #333;
+}
+
+.muted {
+  font-size: 12px;
+  color: #666;
+  margin-top: 6px;
+}
+
+/* ========== BOTONES GENERALES ========== */
+.actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.btn {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 0;
+  background: var(--harvard-red);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(165, 28, 48, 0.12);
+}
+
+.btn.secondary {
+  background: #eaeaea;
+  color: #333;
+  box-shadow: none;
+}
+
+.green {
+  background: var(--success);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+}
+
+.red {
+  background: var(--danger);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+}
+
+/* ========== NOTAS Y TABLAS ========== */
+.note {
+  background: #fff7e6;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ffe9b3;
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+.right .history-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.history-table th,
+.history-table td {
+  padding: 8px;
+  border-bottom: 1px solid #f1f1f1;
+  text-align: left;
+}
+
+.status.sent {
+  color: var(--success);
+  font-weight: 700;
+}
+
+.status.err {
+  color: var(--danger);
+  font-weight: 700;
+}
+
+/* ========== MODALES ========== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+}
+
+.modal {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 520px;
+  width: 92%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.modal h3 {
+  margin: 6px 0 10px;
+}
+
+.modal p {
+  color: #444;
+  font-size: 14px;
+}
+
+.modal .modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 920px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .right {
+    order: 2;
+  }
 }
