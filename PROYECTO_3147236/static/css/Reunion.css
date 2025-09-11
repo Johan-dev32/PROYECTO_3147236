@@ -51,6 +51,11 @@ header .btn-dark {
  margin-top: 20px;
  font-weight: bolder;
 }
+.descripcion {
+  font-size: 1.3rem;     
+  color: #555;           
+
+}
 .offcanvas {
   font-size: 25px;
 }
