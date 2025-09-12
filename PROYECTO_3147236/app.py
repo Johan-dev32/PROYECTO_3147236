@@ -185,6 +185,10 @@ def acudientes():
 def estudiantes():
     return render_template('Estudiantes.html')
 
+@app.route('/noticias')
+def noticias():
+    return render_template('Noticias.html')
+
 @app.route('/usuarios')
 def usuarios():
     return render_template('Usuarios.html')

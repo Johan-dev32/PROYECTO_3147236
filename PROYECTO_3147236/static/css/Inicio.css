@@ -67,7 +67,16 @@ header .btn-outline-primary:hover {
   color: #ffffff;
 }
 .h4{
-  margin-left: 355px;
+  margin-left: 100px;
+  font-weight: bolder;
+  margin-bottom: 10px; 
+  color:#050733ff;
+  margin-top: -20px;
+  font-size: 35px;
+  font-family: 'Trebuchet MS', sans-serif;
+}
+.h6{
+  margin-left: 80px;
   font-weight: bolder;
   margin-bottom: 40px; 
   color:#050733ff;
@@ -182,4 +191,10 @@ color: white;
   color:#050733ff;
   font-size: 30px;
   top: 30px;
+}
+.editar{
+  margin-top: -200px;
+  margin-left: 30px;
+  font-size: 40px;
+  color: #050733ff;
 }

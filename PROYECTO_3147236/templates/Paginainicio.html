@@ -111,49 +111,85 @@
  </div>
 </div>
 
- <!-- Contenido principal -->
+
 <div class="container mt-2">
   <div class="row">
-          <!-- Noticias -->
-<div class="col-md-8">
-  <h4 class="h4">NOTICIAS</h4>
-  <div class="row g-3">
-  <div class="col-md-6"><div  class="p-5 bg-secondary text-white">Noticia 1</div></div>
-  <div class="col-md-6"><div class="p-5 bg-secondary text-white">Noticia 2</div></div>
-  <div class="col-md-6"><div class="p-5 bg-secondary text-white">Noticia 3</div></div>
-  <div class="col-md-6"><div class="p-5 bg-secondary text-white">Noticia 4</div></div>
-</div>
-</div>
+    <!-- Noticias (columna izquierda) -->
+    <div class="col-md-8">
+      <h4 class="h4">NOTICIAS</h4>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <a href="{{ url_for('noticias') }}" class="text-decoration-none">
+            <div class="p-5 bg-secondary text-white rounded shadow-sm">Noticia 1</div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="{{ url_for('noticias') }}" class="text-decoration-none">
+            <div class="p-5 bg-secondary text-white rounded shadow-sm">Noticia 2</div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="{{ url_for('noticias') }}" class="text-decoration-none">
+            <div class="p-5 bg-secondary text-white rounded shadow-sm">Noticia 3</div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="{{ url_for('noticias') }}" class="text-decoration-none">
+            <div class="p-5 bg-secondary text-white rounded shadow-sm">Noticia 4</div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="col-md-4">
+      <p class="h4">CIRCULARES 
+      <p class="h6">ESTUDIANTILES</p>
+      
+
+      <div class="accordion accordion-flush" id="accordionFlushExample">
+        <!-- Circular 1 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+              Circular #1
+            </button>
+          </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+            data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              Contenido de la circular número 1.
+            </div>
+          </div>
+        </div>
+
+        <!-- Circular 2 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+              Circular #2
+            </button>
+          </h2>
+          <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+            data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              Contenido de la circular número 2.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- Fin col-md-4 -->
+  </div> <!-- Fin row -->
+</div> <!-- Fin container -->
 
           
-<div class="col-md-4">
- <h4 class="tiulo4">CIRCULARES</h4>
-<div><h4 class="tiulo5">ESTUDIANTILES</h4></div>
-<div class="accordion accordion-flush" id="accordionFlushExample">
-<div class="accordion-item">
- <h2 class="accordion-header">
- <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne">Circular #1 </button></h2>
-<div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-<div class="accordion-body">Contenido de la circular número 1.</div>
-</div>
-</div>
-
-<div class="accordion-item">
-  <h2 class="accordion-header">
- <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo">Circular #2 </button></h2>
-<div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-<div class="accordion-body">Contenido de la circular número 2.
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
+<!-- CIRCULARES ESTUDIANTILES -->
 
   </div>
 </section>
-
+<a href="{{ url_for('noticias') }}" class="text-decoration-none"><div class="editar"><i class="bi bi-pencil-square"></i>
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
