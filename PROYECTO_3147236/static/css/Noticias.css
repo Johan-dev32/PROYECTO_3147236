@@ -87,6 +87,7 @@ header .btn-dark {
 
 .form-label {
   font-weight: bold;
+  font-size: 20px;
 }
 
 .image-upload {
@@ -121,4 +122,9 @@ textarea {
 .descripcion {
   font-size: 1.3rem;     
   color: #555;           
+}
+.publicar{
+  background-color: #050733ff;
+  font-size: 15px;
+  margin-right: 390px;
 }
