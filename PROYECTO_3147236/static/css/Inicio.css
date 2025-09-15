@@ -67,7 +67,7 @@ header .btn-outline-primary:hover {
   color: #ffffff;
 }
 .h4{
-  margin-left: 100px;
+  margin-left: 250px;
   font-weight: bolder;
   margin-bottom: 10px; 
   color:#050733ff;
@@ -75,8 +75,17 @@ header .btn-outline-primary:hover {
   font-size: 35px;
   font-family: 'Trebuchet MS', sans-serif;
 }
+.h5{
+  margin-left: 1000px;
+  font-weight: bolder;
+  margin-bottom: 10px; 
+  color:#050733ff;
+  margin-top: -400px;
+  font-size: 35px;
+  font-family: 'Trebuchet MS', sans-serif;
+}
 .h6{
-  margin-left: 80px;
+  margin-left: 980px;
   font-weight: bolder;
   margin-bottom: 40px; 
   color:#050733ff;
@@ -193,8 +202,18 @@ color: white;
   top: 30px;
 }
 .editar{
-  margin-top: -200px;
+  margin-top: -250px;
   margin-left: 30px;
   font-size: 40px;
   color: #050733ff;
+}
+.bg-secondary{
+  width: 750px;
+  height: 300px;
+}
+.accordion-item{
+margin-left: 900px;
+}
+.accordion-header, .accordion-body{
+  width: 400px;
 }
