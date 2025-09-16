@@ -202,8 +202,8 @@ color: white;
   top: 30px;
 }
 .editar{
-  margin-top: -250px;
-  margin-left: 30px;
+  margin-top: -60px;
+  margin-left: 930px;
   font-size: 40px;
   color: #050733ff;
 }
@@ -216,4 +216,10 @@ margin-left: 900px;
 }
 .accordion-header, .accordion-body{
   width: 400px;
+}
+.editar1{
+  margin-top: -250px;
+  margin-left: 30px;
+  font-size: 40px;
+  color: #050733ff;
 }

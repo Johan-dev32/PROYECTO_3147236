@@ -9,7 +9,7 @@
   <!-- Iconos -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   <!-- CSS propio -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/Noticias.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/Circulares.css') }}">
 </head>
 <body>
 
@@ -85,80 +85,16 @@
 </div>
 <h1 class="text-center titulo-principal">CREAR NOTICIAS</h1>
 <p class="text-center descripcion">Crea tus Noticias para que el Colegio se informe</p>
-<div class="container my-5">
-  <div class="form-container">
-  <form>
-    <div class="row form-section">
-      <!-- Fecha -->
-      <div class="col-md-6">
-        <label for="fecha" class="form-label">FECHA</label>
-        <input type="date" class="form-control" id="fecha" name="fecha">
-      <div class="mb-3  mt-3">
-      <label class="form-label">TITULO</label>
-      <input type="text" class="form-control" id="titulo" placeholder="Escribe el título de la noticia">
-    </div>
-  </div>
-      
 
-      <!-- Título -->
-      <div class="col-md-6">
-  <label for="creadoPor" class="form-label">CREADO POR</label>
-  <input type="text" class="form-control" id="creadoPor" name="creadoPor" placeholder="Nombre del autor">
-</div>
-
-
- <div class="col-md-12 mt-3">
-  <label for="fileInput" class="form-label">COLOCA EL DOCUMENTO</label>
-  
-  <div id="uploadArea" class="border rounded p-4 text-center" style="cursor:pointer;">
-    <i id="uploadIcon" class="bi bi-file-earmark-text fs-1 text-primary"></i>
-    <p id="uploadText" class="mt-2 text-muted">Haz clic para seleccionar una imagen</p>
-    <input type="file" id="fileInput" accept="image/*" hidden>
-    <div id="preview" class="mt-3"></div>
-  </div>
-</div>
-
-
-    <!-- Redacción -->
-    <div class="row form-section">
-      <div class="col-md-12">
-        <label for="contenido" class="form-label">REDACCION</label>
-        <textarea class="form-control" id="contenido" name="contenido" rows="6" placeholder="Escriba la noticia aquí..."></textarea>
-      </div>
-    </div>
-
-    <!-- Botón -->
-   <div class="text-end">
-  <button id="btnPublicar" class="btn btn-success publicar form-label">
-    <i class="bi bi-box-arrow-in-up"></i> Publicar Noticia
-  </button>
-</div>
-  </form>
-</div>
- <div class="container my-5 p-4 bg-white shadow-sm rounded">
+<div class="container my-5 p-4 bg-white shadow-sm rounded" style="max-width: 600px;">
     <form>
-      <div class="row mb-3">
-        <div class="col-md-6">
-          <label class="form-label fw-bold">FECHA</label>
-          <input type="date" class="form-control" placeholder="dd/mm/aaaa">
-        </div>
-        <div class="col-md-6">
-          <label class="form-label fw-bold">CREADO POR</label>
-          <input type="text" class="form-control" placeholder="Nombre">
-        </div>
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label fw-bold">TÍTULO</label>
-        <input type="text" class="form-control" placeholder="Escribe el título de la noticia">
-      </div>
-
       <div class="mb-3">
         <label class="form-label fw-bold">COLOCA EL DOCUMENTO</label>
         <div class="upload-box text-center p-4">
           <input type="file" id="fileUpload" class="d-none"
                  accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.gif">
           <label for="fileUpload" class="upload-label">
+            <!-- Ícono -->
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="blue" class="mb-2" viewBox="0 0 16 16">
               <path d="M4 0a2 2 0 0 0-2 2v12a2 
               2 0 0 0 2 2h8a2 2 0 0 0 
@@ -168,18 +104,10 @@
           </label>
         </div>
       </div>
-
-      <div class="mb-3">
-        <label class="form-label fw-bold">REDACCIÓN</label>
-        <textarea class="form-control" rows="4" placeholder="Escriba la noticia aquí..."></textarea>
-      </div>
-
-      <div class="text-center">
-        <button type="submit" class="btn btn-dark px-4">📤 Publicar Noticia</button>
-      </div>
     </form>
   </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="{{ url_for('static', filename='js/Noticias.js') }}"></script>
+<script src="{{ url_for('static', filename='js/Circulares.js') }}"></script>
 </body>
 </html>

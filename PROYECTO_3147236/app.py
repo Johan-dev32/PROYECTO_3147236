@@ -357,6 +357,10 @@ def reunion():
 def noticias():
     return render_template('Noticias.html')
 
+@app.route('/circulares')
+def circulares():
+    return render_template('Circulares.html')
+
 @app.route('/noticias_vistas')
 def noticias_vistas():
     return render_template('NoticiasVistas.html')
