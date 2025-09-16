@@ -152,6 +152,181 @@ def eliminar_docente(id):
 
     return redirect(url_for('profesores'))
 
+#ESTUDIANTES
+
+# ---------------- ESTUDIANTES ----------------
+@app.route('/estudiantes')
+@login_required
+def estudiantes():
+    estudiantes = Usuario.query.filter_by(Rol='Estudiante').all()
+    return render_template('Estudiantes.html', estudiantes=estudiantes)
+
+
+@app.route('/agregar_estudiante', methods=['POST'])
+@login_required
+def agregar_estudiante():
+    try:
+        nombre = request.form['Nombre']
+        apellido = request.form['Apellido']
+        correo = request.form['Correo']
+        numero_doc = request.form['NumeroDocumento']
+        telefono = request.form['Telefono']
+        tipo_doc = request.form['TipoDocumento']
+        direccion = request.form['Direccion']
+        curso = request.form['Curso']
+
+        # Contraseña temporal
+        hashed_password = generate_password_hash("123456")
+
+        nuevo_estudiante = Usuario(
+            Nombre=nombre,
+            Apellido=apellido,
+            Correo=correo,
+            Contrasena=hashed_password,
+            TipoDocumento=tipo_doc,
+            NumeroDocumento=numero_doc,
+            Telefono=telefono,
+            Rol='Estudiante',
+            Estado='Activo',
+            Direccion=direccion,
+            Calle=curso,   # usamos Calle como campo "Curso"
+            Genero="Otro"
+        )
+        db.session.add(nuevo_estudiante)
+        db.session.commit()
+        flash("Estudiante agregado correctamente", "success")
+    except SQLAlchemyError as e:
+        db.session.rollback()
+        flash(f"Error al agregar estudiante: {str(e)}", "danger")
+
+    return redirect(url_for('estudiantes'))
+
+
+@app.route('/actualizar_estudiante/<int:id>', methods=['POST'])
+@login_required
+def actualizar_estudiante(id):
+    estudiante = Usuario.query.get_or_404(id)
+
+    estudiante.Nombre = request.form['Nombre']
+    estudiante.Apellido = request.form['Apellido']
+    estudiante.TipoDocumento = request.form['TipoDocumento']
+    estudiante.NumeroDocumento = request.form['NumeroDocumento']
+    estudiante.Correo = request.form['Correo']
+    estudiante.Telefono = request.form['Telefono']
+    estudiante.Direccion = request.form['Direccion']
+    estudiante.Calle = request.form['Curso']
+
+    try:
+        db.session.commit()
+        flash("Estudiante actualizado correctamente", "success")
+    except Exception as e:
+        db.session.rollback()
+        flash(f"Error al actualizar: {e}", "danger")
+
+    return redirect(url_for('estudiantes'))
+
+
+@app.route('/eliminar_estudiante/<int:id>', methods=['POST'])
+@login_required
+def eliminar_estudiante(id):
+    estudiante = Usuario.query.get_or_404(id)
+    try:
+        db.session.delete(estudiante)
+        db.session.commit()
+        flash("Estudiante eliminado correctamente", "danger")
+    except SQLAlchemyError as e:
+        db.session.rollback()
+        flash(f"Error al eliminar estudiante: {str(e)}", "danger")
+
+    return redirect(url_for('estudiantes'))
+
+#ACUDIENTES
+
+@app.route('/acudientes')
+@login_required
+def acudientes():
+    acudientes = Usuario.query.filter_by(Rol='Acudiente').all()
+    return render_template('Acudientes.html', acudientes=acudientes)
+
+
+# Agregar Acudiente
+@app.route('/agregar_acudiente', methods=['POST'])
+@login_required
+def agregar_acudiente():
+    try:
+        nombre = request.form['Nombre']
+        apellido = request.form['Apellido']
+        correo = request.form['Correo']
+        numero_doc = request.form['NumeroDocumento']
+        telefono = request.form['Telefono']
+        tipo_doc = request.form['TipoDocumento']
+        direccion = request.form['Direccion']
+
+        # Contraseña temporal
+        hashed_password = generate_password_hash("123456")
+
+        nuevo_acudiente = Usuario(
+            Nombre=nombre,
+            Apellido=apellido,
+            Correo=correo,
+            Contrasena=hashed_password,
+            TipoDocumento=tipo_doc,
+            NumeroDocumento=numero_doc,
+            Telefono=telefono,
+            Direccion=direccion,
+            Rol='Acudiente',
+            Estado='Activo',
+            Genero="Otro"
+        )
+        db.session.add(nuevo_acudiente)
+        db.session.commit()
+        flash("Acudiente agregado correctamente", "success")
+    except SQLAlchemyError as e:
+        db.session.rollback()
+        flash(f"Error al agregar acudiente: {str(e)}", "danger")
+
+    return redirect(url_for('acudientes'))
+
+
+# Actualizar Acudiente
+@app.route('/actualizar_acudiente/<int:id>', methods=['POST'])
+@login_required
+def actualizar_acudiente(id):
+    acudiente = Usuario.query.get_or_404(id)
+
+    acudiente.Nombre = request.form['Nombre']
+    acudiente.Apellido = request.form['Apellido']
+    acudiente.TipoDocumento = request.form['TipoDocumento']
+    acudiente.NumeroDocumento = request.form['NumeroDocumento']
+    acudiente.Correo = request.form['Correo']
+    acudiente.Telefono = request.form['Telefono']
+    acudiente.Direccion = request.form['Direccion']
+
+    try:
+        db.session.commit()
+        flash("Acudiente actualizado correctamente.", "success")
+    except Exception as e:
+        db.session.rollback()
+        flash(f"Error al actualizar: {e}", "danger")
+
+    return redirect(url_for('acudientes'))
+
+
+# Eliminar Acudiente
+@app.route('/eliminar_acudiente/<int:id>', methods=['POST'])
+@login_required
+def eliminar_acudiente(id):
+    acudiente = Usuario.query.get_or_404(id)
+    try:
+        db.session.delete(acudiente)
+        db.session.commit()
+        flash("Acudiente eliminado correctamente", "danger")
+    except SQLAlchemyError as e:
+        db.session.rollback()
+        flash(f"Error al eliminar acudiente: {str(e)}", "danger")
+
+    return redirect(url_for('acudientes'))
+
 
 @app.route('/manual')
 def manual():
@@ -177,13 +352,6 @@ def materialapoyo():
 def reunion():
     return render_template('Reunion.html')
 
-@app.route('/acudientes')
-def acudientes():
-    return render_template('Acudientes.html')
-
-@app.route('/estudiantes')
-def estudiantes():
-    return render_template('Estudiantes.html')
 
 @app.route('/noticias')
 def noticias():
