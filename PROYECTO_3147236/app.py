@@ -152,9 +152,9 @@ def eliminar_docente(id):
 
     return redirect(url_for('profesores'))
 
-#ESTUDIANTES
 
 # ---------------- ESTUDIANTES ----------------
+
 @app.route('/estudiantes')
 @login_required
 def estudiantes():
