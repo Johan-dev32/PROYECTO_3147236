@@ -94,7 +94,7 @@ confirmSend.addEventListener("click", () => {
   const fecha = document.getElementById("fecha").value;
   const titulo = document.getElementById("titulo").value;
   const contenido = document.getElementById("contenido").value;
-  const creadoPor = document.getElementById("creadoPor")?.value || "Anónimo";
+  const creadoPor = document.getElementById("creadoPor").value || "Anónimo";
 
   let imagen = "";
   if (preview.querySelector("img")) {
@@ -104,15 +104,18 @@ confirmSend.addEventListener("click", () => {
   // --- Guardar noticia ---
   let noticias = JSON.parse(localStorage.getItem("noticias")) || [];
 
-  // índice para saber dónde guardar (0 a 3 → Noticia 1 a 4)
-  let index = noticias.length % 4;
+  // Agregar nueva noticia
+  noticias.push({ fecha, titulo, contenido, creadoPor, imagen });
 
-  noticias[index] = { fecha, titulo, contenido, creadoPor, imagen };
+  // Mantener solo las últimas 4
+  if (noticias.length > 4) {
+    noticias = noticias.slice(-4);
+  }
 
   localStorage.setItem("noticias", JSON.stringify(noticias));
 
   alert("✅ Noticia publicada correctamente");
 
-  // Opcional: redirigir al inicio
-  window.location.href = "/paginainicio";
+  // 🔁 Opcional: redirigir a inicio o noticias vistas
+   window.location.href = "/paginainicio";
 });
