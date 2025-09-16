@@ -42,9 +42,9 @@ const cancelSend = document.getElementById("cancelSend");
 const confirmSend = document.getElementById("confirmSend");
 
 btnPublicar.addEventListener("click", () => {
-  const titulo = document.querySelector("input[placeholder='Escribe el título de la noticia']").value;
-  const contenido = document.querySelector("textarea[placeholder='Escribe aquí tu noticia...']").value;
-  const autor = document.querySelector("input[placeholder='Escribe el título de la noticia']").value || "Anónimo";
+const titulo = document.querySelector("input[placeholder='Escribe el título de la noticia']").value;
+const contenido = document.querySelector("textarea[placeholder='Escribe aquí tu noticia...']").value;
+const autor = document.querySelector("input[placeholder='Nombre del autor']").value || "Anónimo";
 
   // Mostrar el modal
   confirmText.textContent = `¿Quieres publicar la noticia "${titulo}" creada por ${autor}?`;
