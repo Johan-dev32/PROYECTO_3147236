@@ -51,7 +51,7 @@ def index():
 
 @app.route('/paginainicio')
 def paginainicio():
-    return render_template('PaginaInicio.html')
+    return render_template('Paginainicio.html')
 
 @app.route('/perfil')
 @login_required
@@ -357,6 +357,10 @@ def reunion():
 def noticias():
     return render_template('Noticias.html')
 
+@app.route('/noticias_vistas')
+def noticias_vistas():
+    return render_template('NoticiasVistas.html')
+
 @app.route('/usuarios')
 def usuarios():
     return render_template('Usuarios.html')
@@ -368,6 +372,7 @@ def asignaturas():
 @app.route('/horarios')
 def horarios():
     return render_template('Horarios.html')
+
     
 
 #Conexión de los cursos

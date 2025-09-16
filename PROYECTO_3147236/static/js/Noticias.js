@@ -6,7 +6,7 @@ const preview = document.getElementById("preview");
 
 const btnPublicar = document.getElementById("btnPublicar");
 
-// Modal dinámico (lo creamos desde JS)
+// Modal dinámico
 const confirmModal = document.createElement("div");
 confirmModal.className = "custom-modal";
 confirmModal.style.cssText = `
@@ -87,14 +87,14 @@ cancelSend.addEventListener("click", () => {
   confirmModal.style.display = "none";
 });
 
-// 📌 Botón confirmar → enviar
+// 📌 Botón confirmar → enviar noticia
 confirmSend.addEventListener("click", () => {
   confirmModal.style.display = "none";
 
   const fecha = document.getElementById("fecha").value;
-  const titulo = document.querySelector("input[placeholder='Escribe el título de la noticia']").value;
+  const titulo = document.getElementById("titulo").value;
   const contenido = document.getElementById("contenido").value;
-  const creadoPor = document.getElementById("titulo").value || "Anónimo";
+  const creadoPor = document.getElementById("creadoPor")?.value || "Anónimo";
 
   let imagen = "";
   if (preview.querySelector("img")) {
@@ -104,19 +104,15 @@ confirmSend.addEventListener("click", () => {
   // --- Guardar noticia ---
   let noticias = JSON.parse(localStorage.getItem("noticias")) || [];
 
-  // Si hay menos de 4 noticias → agregar en orden
-  if (noticias.length < 4) {
-    noticias.push({ fecha, titulo, contenido, creadoPor, imagen });
-  } else {
-    // Si ya hay 4 → buscar la posición para sobrescribir
-    let siguienteIndex = noticias.findIndex(n => !n);
-    if (siguienteIndex === -1) {
-      siguienteIndex = 0; // reinicia en Noticia 1
-    }
-    noticias[siguienteIndex] = { fecha, titulo, contenido, creadoPor, imagen };
-  }
+  // índice para saber dónde guardar (0 a 3 → Noticia 1 a 4)
+  let index = noticias.length % 4;
+
+  noticias[index] = { fecha, titulo, contenido, creadoPor, imagen };
 
   localStorage.setItem("noticias", JSON.stringify(noticias));
 
   alert("✅ Noticia publicada correctamente");
+
+  // Opcional: redirigir al inicio
+  window.location.href = "/paginainicio";
 });
