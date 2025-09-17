@@ -58,6 +58,12 @@ header .btn-dark {
   font-size: 30px;
 }
 
+.offcanvas1-body {
+  flex-grow: 1;
+  overflow-y: auto;   
+  max-height: 100vh;  
+}
+
 .nav-item {
   font-weight: bold;
   font-size: 22px;

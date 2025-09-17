@@ -76,6 +76,13 @@ header .btn-outline-primary:hover {
   font-size: 30px ;
 
 }
+
+.offcanvas1-body {
+  flex-grow: 1;
+  overflow-y: auto;   
+  max-height: 100vh;  
+}
+
 #sidebar .nav-link {
   font-size: 18px;   /* tamaño menú hamburguesa */
   font-weight: bold;
