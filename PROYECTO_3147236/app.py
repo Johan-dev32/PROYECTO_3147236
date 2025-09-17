@@ -1,11 +1,22 @@
 import os
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask import Flask, render_template, request, redirect, url_for, flash, session, send_file, jsonify  # <-- añadí send_file, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy import create_engine
 from sqlalchemy_utils import database_exists, create_database
 import pymysql
+
+# --- NUEVO ---
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.application import MIMEApplication
+from email.mime.text import MIMEText
+from apscheduler.schedulers.background import BackgroundScheduler
+from datetime import datetime
+# --- FIN NUEVO ---
 
 # Importa el objeto 'db' y los modelos desde tu archivo de modelos
 from database.models import db, Usuario
@@ -117,7 +128,6 @@ def agregar_docente():
 def actualizar_docente(id):
     docente = Usuario.query.get_or_404(id)  # Buscar por ID
 
-    # Asignar valores desde el formulario
     docente.Nombre = request.form['Nombre']
     docente.Apellido = request.form['Apellido']
     docente.TipoDocumento = request.form['TipoDocumento']
@@ -175,7 +185,6 @@ def agregar_estudiante():
         direccion = request.form['Direccion']
         curso = request.form['Curso']
 
-        # Contraseña temporal
         hashed_password = generate_password_hash("123456")
 
         nuevo_estudiante = Usuario(
@@ -189,7 +198,7 @@ def agregar_estudiante():
             Rol='Estudiante',
             Estado='Activo',
             Direccion=direccion,
-            Calle=curso,   # usamos Calle como campo "Curso"
+            Calle=curso,
             Genero="Otro"
         )
         db.session.add(nuevo_estudiante)
@@ -240,7 +249,8 @@ def eliminar_estudiante(id):
 
     return redirect(url_for('estudiantes'))
 
-#ACUDIENTES
+
+# ---------------- ACUDIENTES ----------------
 
 @app.route('/acudientes')
 @login_required
@@ -249,7 +259,6 @@ def acudientes():
     return render_template('Acudientes.html', acudientes=acudientes)
 
 
-# Agregar Acudiente
 @app.route('/agregar_acudiente', methods=['POST'])
 @login_required
 def agregar_acudiente():
@@ -262,7 +271,6 @@ def agregar_acudiente():
         tipo_doc = request.form['TipoDocumento']
         direccion = request.form['Direccion']
 
-        # Contraseña temporal
         hashed_password = generate_password_hash("123456")
 
         nuevo_acudiente = Usuario(
@@ -288,7 +296,6 @@ def agregar_acudiente():
     return redirect(url_for('acudientes'))
 
 
-# Actualizar Acudiente
 @app.route('/actualizar_acudiente/<int:id>', methods=['POST'])
 @login_required
 def actualizar_acudiente(id):
@@ -312,7 +319,6 @@ def actualizar_acudiente(id):
     return redirect(url_for('acudientes'))
 
 
-# Eliminar Acudiente
 @app.route('/eliminar_acudiente/<int:id>', methods=['POST'])
 @login_required
 def eliminar_acudiente(id):
@@ -362,83 +368,8 @@ def noticias_vistas():
     return render_template('NoticiasVistas.html')
 
 @app.route('/usuarios')
-@login_required
 def usuarios():
-    usuarios = Usuario.query.all()
-    return render_template('Usuarios.html', usuarios=usuarios)
-
-@app.route('/agregar_usuario', methods=['POST'])
-@login_required
-def agregar_usuario():
-    try:
-        nombre = request.form['Nombre']
-        apellido = request.form['Apellido']
-        correo = request.form['Correo']
-        numero_doc = request.form['NumeroDocumento']
-        telefono = request.form['Telefono']
-        direccion = request.form['Direccion']
-        rol = request.form['Rol']
-        
-        hashed_password = generate_password_hash("123456")
-
-        nuevo_usuario = Usuario(
-            Nombre=nombre,
-            Apellido=apellido,
-            Correo=correo,
-            Contrasena=hashed_password,
-            TipoDocumento="C.C.",
-            NumeroDocumento=numero_doc,
-            Telefono=telefono,
-            Direccion=direccion,
-            Rol=rol,
-            Estado="Activo",
-            Genero="Otro"
-        )
-        db.session.add(nuevo_usuario)
-        db.session.commit()
-        flash("Usuario agregado correctamente", "success")
-    except SQLAlchemyError as e:
-        db.session.rollback()
-        flash(f"Error al agregar usuario: {str(e)}", "danger")
-
-    return redirect(url_for('usuarios'))
-
-@app.route('/actualizar_usuario/<int:id>', methods=['POST'])
-@login_required
-def actualizar_usuario(id):
-    usuario = Usuario.query.get_or_404(id)
-
-    usuario.Nombre = request.form['Nombre']
-    usuario.Apellido = request.form['Apellido']
-    usuario.NumeroDocumento = request.form['NumeroDocumento']
-    usuario.Correo = request.form['Correo']
-    usuario.Telefono = request.form['Telefono']
-    usuario.Direccion = request.form['Direccion']
-    usuario.Rol = request.form['Rol']
-
-    try:
-        db.session.commit()
-        flash("Usuario actualizado correctamente.", "success")
-    except Exception as e:
-        db.session.rollback()
-        flash(f"Error al actualizar: {e}", "danger")
-
-    return redirect(url_for('usuarios'))
-
-@app.route('/eliminar_usuario/<int:id>', methods=['POST'])
-@login_required
-def eliminar_usuario(id):
-    usuario = Usuario.query.get_or_404(id)
-    try:
-        db.session.delete(usuario)
-        db.session.commit()
-        flash("Usuario eliminado correctamente", "danger")
-    except SQLAlchemyError as e:
-        db.session.rollback()
-        flash(f"Error al eliminar usuario: {str(e)}", "danger")
-
-    return redirect(url_for('usuarios'))
-
+    return render_template('Usuarios.html')
 
 @app.route('/asignaturas')
 def asignaturas():
@@ -467,9 +398,8 @@ def registro():
         direccion = request.form.get('Direccion')
         rol = request.form.get('Rol')
 
-        # Se añaden valores por defecto para los campos faltantes en el formulario
-        tipo_documento = request.form.get('TipoDocumento', 'CC')  # Valor por defecto 'CC'
-        estado = request.form.get('Estado', 'Activo')  # Valor por defecto 'Activo'
+        tipo_documento = request.form.get('TipoDocumento', 'CC')
+        estado = request.form.get('Estado', 'Activo')
         genero = request.form.get('Genero', '')
         
         if not all([nombre, apellido, correo, contrasena, numero_documento, telefono, direccion, rol]):
@@ -546,8 +476,7 @@ def logout():
     flash('Has cerrado sesión.')
     return redirect(url_for('index'))
 
-#sub-inicio osea que ya no son del inicio si no de otras funciones
-
+#sub-inicio
 @app.route('/materialapoyo2')
 def materialapoyo2():
     return render_template('MaterialApoyo2.html')
@@ -556,5 +485,104 @@ def materialapoyo2():
 def registrotutorias2():
     return render_template('RegistroTutorías2.html')
 
-if __name__ == '__main__':
+
+# ========================
+# --- NUEVO: RESUMEN SEMANAL ---
+# ========================
+def generar_pdf(actividades, problemas, filename="resumen.pdf"):
+    """Genera un PDF con actividades y problemas"""
+    filepath = os.path.join(os.getcwd(), filename)
+    
+    c = canvas.Canvas(filename, pagesize=letter)
+    width, height = letter
+
+    c.setFont("Helvetica-Bold", 18)
+    c.drawString(200, height - 50, "📄 Resumen Semanal")
+
+    c.setFont("Helvetica", 12)
+    y = height - 100
+
+    c.drawString(50, y, "✅ Actividades realizadas:")
+    y -= 20
+    for act in actividades:
+        c.drawString(70, y, f"- {act}")
+        y -= 15
+
+    y -= 20
+    c.drawString(50, y, "⚠️ Problemas registrados:")
+    y -= 20
+    for prob in problemas:
+        c.drawString(70, y, f"- {prob}")
+        y -= 15
+
+    c.save()
+    return filepath
+
+
+def enviar_resumen_pdf(destinatarios, pdf_path="resumen.pdf"):
+    """Envía el PDF por correo usando Gmail"""
+    remitente = "tucorreo@gmail.com"
+    password = "tu_contraseña_de_aplicacion"
+
+    msg = MIMEMultipart()
+    msg['From'] = remitente
+    msg['To'] = ", ".join(destinatarios)
+    msg['Subject'] = "Resumen semanal de actividades"
+
+    msg.attach(MIMEText("Adjunto encontrarás el resumen semanal en PDF.", "plain"))
+
+    with open(pdf_path, "rb") as f:
+        attach = MIMEApplication(f.read(), _subtype="pdf")
+        attach.add_header('Content-Disposition', 'attachment', filename=pdf_path)
+        msg.attach(attach)
+
+    try:
+        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server.starttls()
+        server.login(remitente, password)
+        server.sendmail(remitente, destinatarios, msg.as_string())
+        server.quit()
+        print("Resumen enviado correctamente.")
+    except Exception as e:
+        print("Error al enviar correo:", e)
+
+
+@app.route('/generar', methods=['POST'])   # 👈 ahora coincide con tu resumen.js
+def generar_resumen():
+    """Genera un PDF y lo devuelve como descarga"""
+    data = request.get_json()
+    actividades = data.get("actividades", [])
+    problemas = data.get("problemas", [])
+
+    filename = generar_pdf(actividades, problemas)
+    return send_file(filename, as_attachment=True)
+
+
+@app.route('/enviar_resumen', methods=['POST'])
+def enviar_resumen():
+    """Genera un PDF y lo envía por correo"""
+    data = request.get_json()
+    actividades = data.get("actividades", [])
+    problemas = data.get("problemas", [])
+    destinatarios = data.get("destinatarios", ["docente@colegio.com"])
+
+    filename = generar_pdf(actividades, problemas)
+    enviar_resumen_pdf(destinatarios, filename)
+
+    return jsonify({"message": "Resumen enviado por correo."})
+
+
+def tarea_programada():
+    actividades = ["Clases realizadas", "Reuniones", "Asistencia"]
+    problemas = ["Error en registro de notas", "Falla en servidor"]
+
+    filename = generar_pdf(actividades, problemas)
+    enviar_resumen_pdf(["docente@colegio.com", "gisellleal491@gmail.com"], filename)
+
+
+scheduler = BackgroundScheduler()
+scheduler.add_job(tarea_programada, 'cron', day_of_week='tue', hour=19, minute=10)
+
+
+if __name__ == "__main__":
     app.run(debug=True)
