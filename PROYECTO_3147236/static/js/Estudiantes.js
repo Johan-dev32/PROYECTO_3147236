@@ -1,27 +1,20 @@
-function buscarDocente() {
-  // Obtener el valor del input
-  let input = document.getElementById("search");
-  let filtro = input.value.toLowerCase();
-
-  // Seleccionar la tabla y las filas
-  let tabla = document.getElementById("tabla-docentes");
-  let filas = tabla.getElementsByTagName("tr");
-
-  // Recorrer todas las filas excepto el encabezado
-  for (let i = 1; i < filas.length; i++) {
-    let celdas = filas[i].getElementsByTagName("td");
-    let encontrado = false;
-
-    // Revisar cada celda de la fila
-    for (let j = 0; j < celdas.length; j++) {
-      let texto = celdas[j].textContent || celdas[j].innerText;
-      if (texto.toLowerCase().indexOf(filtro) > -1) {
-        encontrado = true;
-        break;
-      }
-    }
-
-    // Mostrar u ocultar fila
-    filas[i].style.display = encontrado ? "" : "none";
+document.addEventListener("DOMContentLoaded", () => {
+  const addBtn = document.querySelector(".add");
+  if (addBtn) {
+    addBtn.addEventListener("click", () => {
+      const modal = new bootstrap.Modal(document.getElementById("agregarModal"));
+      modal.show();
+    });
   }
+});
+
+// Buscar estudiante en la tabla
+function buscarEstudiante() {
+  let input = document.getElementById("search").value.toLowerCase();
+  let rows = document.querySelectorAll("table tbody tr");
+
+  rows.forEach(row => {
+    let texto = row.innerText.toLowerCase();
+    row.style.display = texto.includes(input) ? "" : "none";
+  });
 }

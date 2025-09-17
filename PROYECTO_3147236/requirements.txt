@@ -13,5 +13,8 @@ mysql-connector-python==9.4.0
 packaging==25.0
 PyMySQL==1.1.2
 SQLAlchemy==2.0.43
+SQLAlchemy-Utils==0.42.0
+reportlab==4.2.2
+apscheduler==3.10.4
 typing_extensions==4.15.0
 Werkzeug==3.1.3
