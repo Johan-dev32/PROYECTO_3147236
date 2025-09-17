@@ -94,6 +94,14 @@ header .btn-outline-primary:hover {
   font-weight: bold;
   font-size: 22px;
 }
+
+
+.offcanvas1-body {
+  flex-grow: 1;
+  overflow-y: auto;   
+  max-height: 100vh;  
+}
+
 .titulo{
   margin-left:600px;
   font-size: 40px;

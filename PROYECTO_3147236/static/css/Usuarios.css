@@ -15,7 +15,6 @@ header {
   color: #050733ff;
   font-size: 40px;
   font-weight: bolder;
-  font-family: 'Trebuchet MS', sans-serif;
   margin: 0;
   margin-left: 60px;
 }
@@ -36,7 +35,7 @@ header .btn-dark {
   margin-left: 10px;
 }
 
-/*  menu_des  */
+/* menú lateral */
 #sidebar {
   width: 220px;
   min-height: 100vh;
@@ -47,15 +46,7 @@ header .btn-dark {
   background: linear-gradient(180deg, #3b61ea, #fc8e75);
   border-radius: 8px;
 }
-.titulo-principal{
- margin-top: 20px;
- font-weight: bolder;
-}
-.descripcion {
-  font-size: 1.3rem;     
-  color: #555;           
 
-}
 .offcanvas {
   font-size: 25px;
 }
@@ -65,7 +56,6 @@ header .btn-dark {
   font-weight: bold;
   font-size: 30px;
 }
-
 
 .offcanvas1-body {
   flex-grow: 1;
@@ -83,61 +73,3 @@ header .btn-dark {
   margin-bottom: 10px;
 }
 
-
-header h2 {
-  font-size: 1.3rem;
-  font-weight: bold;
-}
-
-/* ===== Tarjeta principal ===== */
-.card {
-  border-radius: 15px;
-  border: none;
-}
-
-.card h2 {
-  color: #050733ff;
-  font-weight: bold;
-}
-
-.card p {
-  font-size: 0.9rem;
-}
-
-/* ===== Labels e inputs ===== */
-.form-label {
-  font-weight: 600;
-  color: #333;
-}
-
-input.form-control {
-  border-radius: 10px;
-  border: 1px solid #ced4da;
-  padding: 10px;
-}
-
-input.form-control:focus {
-  border-color: #050733ff;
-  box-shadow: 0 0 5px rgba(0, 40, 85, 0.4);
-}
-
-/* ===== Botón principal ===== */
-#btnAgendar {
-  border-radius: 30px;
-  padding: 10px 25px;
-  font-size: 1rem;
-  font-weight: 600;
-  background-color: #050733ff;
-  border: none;
-}
-
-#btnAgendar:hover {
-  background-color: #050733ff;
-}
-
-/* ===== Input del link generado ===== */
-#linkGenerado {
-  background-color: #f1f3f5;
-  font-weight: 500;
-  color: #495057;
-}

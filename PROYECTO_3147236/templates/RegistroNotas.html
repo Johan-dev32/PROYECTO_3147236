@@ -9,52 +9,39 @@
   <!-- Iconos -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   <!-- CSS propio -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/cursos_notas.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/RegistroNotas.css') }}">
 </head>
 <body>
 
-
+  <!-- HEADER -->
   <header class="d-flex align-items-center p-3 border-bottom w-100">
     <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
       <i class="bi bi-list"></i>
     </button>
     <h2 class="titulo-header mx-4 mb-0">| COLEGIO FE Y ALEGRIA</h2>
 
-
     <div class="dropdown ms-auto">
-      <button 
-        class="btn btn-edunotas position-relative dropdown-toggle" 
-        type="button" 
-        id="dropdownMenuButton1" 
-        data-bs-toggle="dropdown" 
-        aria-expanded="false">
+      <button class="btn btn-edunotas position-relative dropdown-toggle" type="button" data-bs-toggle="dropdown">
         <span class="bi bi-envelope-fill"></span>
       </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="#">Ajustes</a></li>
         <li><a class="dropdown-item" href="#">Opción 2</a></li>
         <li><a class="dropdown-item" href="#">Opción 3</a></li>
       </ul>
     </div>
 
-
     <div class="dropdown">
-      <button 
-        class="btn btn-usuario dropdown-toggle" 
-        type="button" 
-        id="dropdownMenuButton2" 
-        data-bs-toggle="dropdown" 
-        aria-expanded="false">
+      <button class="btn btn-usuario dropdown-toggle" type="button" data-bs-toggle="dropdown">
         <span class="bi bi-person-lines-fill"></span>
       </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-        <li><a class="dropdown-item" href="{{url_for('perfil')}}">Perfil</a></li>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Perfil</a></li>
+        <li><a class="dropdown-item" href="#">Observador</a></li>
         <li><a class="dropdown-item" href="{{url_for('login')}}">Cerrar sesión</a></li>
       </ul>
     </div>
   </header>
-
-
 
 <!--  MENU  -->
   <div class="offcanvas offcanvas-start text-white" tabindex="-1" id="sidebar">
@@ -108,67 +95,83 @@
   <li class="nav-item"><a href="{{ url_for('horarios') }}" class="nav-link text-white"><i class="bi bi-globe-americas"></i> Horarios</a></li>
  </ul>
  </div>
-</div>
+</div>  <!-- CONTENIDO -->
+  <div class="container mt-4">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">Curso {{ curso_id }}</h3>
 
-<div class="container mt-4">
-  <div class="card">
-    <div class="card-body">
-      <h3 class="card-title">Curso {{ curso_id }}</h3>
-
-      <!-- elegir materia -->
-      <div class="mb-3">
-        <label for="materia" class="form-label">Selecciona una materia:</label>
-        <select id="materia" class="form-select"></select>
+        <!-- selector de materia -->
+        <div class="mb-3">
+          <label for="materia" class="form-label">Selecciona una materia:</label>
+          <select id="materia" class="form-select"></select>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- tabla principal  -->
-<div class="tabla-container mt-4">
-  <table class="tabla">
-    <thead>
-      <tr>
-        <th class="fijo">Nombre</th>
-        <th class="fijo">Curso</th>
-        <th class="fijo">Materia</th>
-        <th>Nota 1</th>
-        <th>Nota 2</th>
-        <th>Nota 3</th>
-        <th>Asistencia 1</th>
-        <th>Asistencia 2</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="fijo">Ana Gómez</td>
-        <td class="fijo">{{ curso_id }}</td>
-        <td class="fijo">ESPAÑOL</td>
-        <td><input type="number" step="0.1" min="1" max="5" value="4.5" readonly></td>
-        <td><input type="number" step="0.1" min="1" max="5" value="4.0" readonly></td>
-        <td><input type="number" step="0.1" min="1" max="5" value="3.8" readonly></td>
-        <td>
-          <select disabled>
-            <option>Asistió</option>
-          </select>
-        </td>
-        <td>
-          <select disabled>
-            <option>No asistió</option>
-          </select>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-    <script src="{{ url_for('static', filename='js/validacion_planilla_notas.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/materias.js') }}"></script>
-    <script>
-   
+  <!-- BOTONES -->
+  <div class="container mt-3 text-center">
+    <button class="btn btn-success me-2" onclick="guardarNotas()">
+      <i class="bi bi-save"></i> Guardar
+    </button>
+    <button class="btn btn-warning" onclick="restablecerNotas()">
+      <i class="bi bi-arrow-counterclockwise"></i> Restablecer
+    </button>
+  </div>
+
+  <!-- TABLA -->
+  <div class="tabla-container mt-4">
+    <table class="tabla">
+      <thead>
+        <tr>
+          <th class="fijo">Nombre</th>
+          <th class="fijo">Curso</th>
+          <th class="fijo">Materia</th>
+          <th>Nota 1</th>
+          <th>Nota 2</th>
+          <th>Nota 3</th>
+          <th>Asistencia 1</th>
+          <th>Asistencia 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="fijo">Ana Gómez</td>
+          <td class="fijo">{{ curso_id }}</td>
+          <td class="fijo">Matemáticas</td>
+          <td><input type="number" step="0.1" min="1" max="5"></td>
+          <td><input type="number" step="0.1" min="1" max="5"></td>
+          <td><input type="number" step="0.1" min="1" max="5"></td>
+          <td>
+            <select>
+              <option value="">--Seleccionar--</option>
+              <option value="asistió">Asistió</option>
+              <option value="no asistió">No asistió</option>
+              <option value="excusa">Excusa</option>
+            </select>
+          </td>
+          <td>
+            <select>
+              <option value="">--Seleccionar--</option>
+              <option value="asistió">Asistió</option>
+              <option value="no asistió">No asistió</option>
+              <option value="excusa">Excusa</option>
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- JS -->
+  <script src="{{ url_for('static', filename='js/validacion_planilla_notas.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/materias.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/acciones_notas.js') }}"></script>
+  <script>
+    // cargar materias según curso
     cargarMaterias("{{ curso_id }}");
-    </script>
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
-
 </html>

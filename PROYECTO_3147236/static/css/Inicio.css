@@ -96,6 +96,15 @@ header .btn-outline-primary:hover {
 .offcanvas{
   font-size: 25px;
 }
+
+
+.offcanvas1-body {
+  flex-grow: 1;
+  overflow-y: auto;   
+  max-height: 100vh;  
+}
+
+
 .btn-close-red-light {
 filter: invert(60%) sepia(100%) saturate(2000%) hue-rotate(316deg) brightness(103%) ;
 
