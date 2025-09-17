@@ -362,8 +362,83 @@ def noticias_vistas():
     return render_template('NoticiasVistas.html')
 
 @app.route('/usuarios')
+@login_required
 def usuarios():
-    return render_template('Usuarios.html')
+    usuarios = Usuario.query.all()
+    return render_template('Usuarios.html', usuarios=usuarios)
+
+@app.route('/agregar_usuario', methods=['POST'])
+@login_required
+def agregar_usuario():
+    try:
+        nombre = request.form['Nombre']
+        apellido = request.form['Apellido']
+        correo = request.form['Correo']
+        numero_doc = request.form['NumeroDocumento']
+        telefono = request.form['Telefono']
+        direccion = request.form['Direccion']
+        rol = request.form['Rol']
+        
+        hashed_password = generate_password_hash("123456")
+
+        nuevo_usuario = Usuario(
+            Nombre=nombre,
+            Apellido=apellido,
+            Correo=correo,
+            Contrasena=hashed_password,
+            TipoDocumento="C.C.",
+            NumeroDocumento=numero_doc,
+            Telefono=telefono,
+            Direccion=direccion,
+            Rol=rol,
+            Estado="Activo",
+            Genero="Otro"
+        )
+        db.session.add(nuevo_usuario)
+        db.session.commit()
+        flash("Usuario agregado correctamente", "success")
+    except SQLAlchemyError as e:
+        db.session.rollback()
+        flash(f"Error al agregar usuario: {str(e)}", "danger")
+
+    return redirect(url_for('usuarios'))
+
+@app.route('/actualizar_usuario/<int:id>', methods=['POST'])
+@login_required
+def actualizar_usuario(id):
+    usuario = Usuario.query.get_or_404(id)
+
+    usuario.Nombre = request.form['Nombre']
+    usuario.Apellido = request.form['Apellido']
+    usuario.NumeroDocumento = request.form['NumeroDocumento']
+    usuario.Correo = request.form['Correo']
+    usuario.Telefono = request.form['Telefono']
+    usuario.Direccion = request.form['Direccion']
+    usuario.Rol = request.form['Rol']
+
+    try:
+        db.session.commit()
+        flash("Usuario actualizado correctamente.", "success")
+    except Exception as e:
+        db.session.rollback()
+        flash(f"Error al actualizar: {e}", "danger")
+
+    return redirect(url_for('usuarios'))
+
+@app.route('/eliminar_usuario/<int:id>', methods=['POST'])
+@login_required
+def eliminar_usuario(id):
+    usuario = Usuario.query.get_or_404(id)
+    try:
+        db.session.delete(usuario)
+        db.session.commit()
+        flash("Usuario eliminado correctamente", "danger")
+    except SQLAlchemyError as e:
+        db.session.rollback()
+        flash(f"Error al eliminar usuario: {str(e)}", "danger")
+
+    return redirect(url_for('usuarios'))
+
 
 @app.route('/asignaturas')
 def asignaturas():
